@@ -2,10 +2,18 @@ package controller;
 
 import database.AccountDBConnector;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
+import model.Account;
 
 import java.io.IOException;
 import java.sql.*;
@@ -14,40 +22,67 @@ public class LoginController {
     @FXML protected Button button;
     @FXML protected TextField username;
     @FXML protected PasswordField password;
+    @FXML protected Label caution;
 
-//    public void initialize() {
-//        AccountDBConnector.getInstance().add("nice", "nice", "1");
-//    }
-    @FXML
-    public void handleLoginBtn(ActionEvent event) throws IOException, SQLException {
+    public void initialize() throws SQLException {
+        caution.setVisible(false);
+        username.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                if (event.getCode() == KeyCode.ENTER){
+                    TextField userName  = (TextField) event.getSource();
+                    Stage stage = (Stage) userName.getScene().getWindow();
+                    try {
+                        checkUsernameAndPassword(stage);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+        password.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                if (event.getCode() == KeyCode.ENTER){
+                    PasswordField passwordField  = (PasswordField) event.getSource();
+                    Stage stage = (Stage) passwordField.getScene().getWindow();
+                    try {
+                        checkUsernameAndPassword(stage);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+    }
 
-        Connection connection = AccountDBConnector.getInstance().getConnection();
+    public void handleLoginBtn(ActionEvent event) throws IOException {
+        Button button = (Button) event.getSource();
+        Stage stage = (Stage) button.getScene().getWindow();
+        this.checkUsernameAndPassword(stage);
+    }
 
-        Statement statement = connection.createStatement();
-
-        ResultSet resultSet = statement.executeQuery("select * from Test where username" +
-                " = '" + username.getText() + "' or email = '" + password + "' and password  = '" + password.getText() + "'");
-
-        if (resultSet.next()) {
-            HomeController homeController = new HomeController();
-            homeController.loginWith(username.getText());
+    private void checkUsernameAndPassword(Stage stage) throws IOException {
+        boolean loginStatus = false;
+        username.getText();
+        password.getText();
+        Account account = AccountDBConnector.isLogin(username.getText(),password.getText());
+        if (account != null) {
+            loginStatus = true;
+            this.loginToHome(stage, account);
         }
+        if (!loginStatus) {
+            caution.setVisible(true);
+            caution.setText("Username or Password is incorrect.");
+        }
+    }
 
-//        if (accountDBConnector.login(username.getText(), password.getText())) {
-//            HomeController homeController = new HomeController();
-//            homeController.loginWith(username.getText());
-//            Button b = (Button) event.getSource();
-//            Stage stage = (Stage) b.getScene().getWindow();
-//            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("home.fxml"));
-//            try {
-//                stage.setScene(new Scene(fxmlLoader.load(), 600, 400));
-//                stage.show();
-//            }catch (NullPointerException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//        else {
-//            password.clear();
-//        }
+    private void loginToHome(Stage stage, Account account) throws IOException {
+        FXMLLoader loader = new FXMLLoader( getClass().getResource("/home.fxml"));
+        stage.setScene(new Scene(loader.load(), 1080, 600));
+        HomeController homeController = loader.getController();
+        homeController.loginWith(account);
+        caution.setVisible(false);
+        stage.show();
     }
 }

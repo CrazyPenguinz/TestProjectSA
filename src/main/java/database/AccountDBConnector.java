@@ -1,44 +1,58 @@
 package database;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import model.Account;
+
+import java.sql.*;
 
 public class AccountDBConnector {
+    private static String urlDB = "jdbc:mysql://localhost:3306/TestDB";
+    private static String user = "mote";
+    private static String pass = "1";
 
-    private AccountDBConnector() {
-
-    }
-
-    public static AccountDBConnector getInstance() {
-        return new AccountDBConnector();
-    }
-
-    public Connection getConnection() {
-        String connect_string = "jdbc:sqlite:data.db";
-
-        Connection connection = null;
-
+    public static ObservableList getAccounts() throws SQLException {
+        ObservableList<Account> accounts = FXCollections.observableArrayList();
         try {
-            Class.forName("org.sqlite.JDBC");
-            connection = DriverManager.getConnection(connect_string);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            Connection connection = DriverManager.getConnection(urlDB, user, pass);
+            if (connection != null) {
+                String query = "select * from Account";
+                Statement statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery(query);
+                while (resultSet.next()) {
+                    String type = resultSet.getString("Type");
+                    String firstName = resultSet.getString("FirstName");
+                    String lastName = resultSet.getString("LastName");
+                    String username = resultSet.getString("Username");
+                    String password = resultSet.getString("Password");
+                    accounts.add(new Account(type, firstName, lastName, username, password));
+                }
+                connection.close();
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return accounts;
+    }
+
+    public static Account isLogin(String username, String password) {
+        try {
+            Connection connection = DriverManager.getConnection(urlDB, user, pass);
+            if (connection != null) {
+                String query =  "select * from Account where Username='" + username + "' and Password='" + password + "'";
+                Statement statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery(query);
+                String type = resultSet.getString("Type");
+                String userName = resultSet.getString("Username");
+                String passWord = resultSet.getString("Password");
+                String firstName = resultSet.getString("FirstName");
+                String lastName = resultSet.getString("LastName");
+                return new Account(type, userName, passWord, firstName, lastName);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-        return connection;
+        return null;
     }
 
-//    AccountDB information = new AccountDB();
-//
-//    public boolean login(String username, String password) {
-//        if (information.getAccount(username).getPassword().equals(password)) return true;
-//        return false;
-//    }
-//
-//    public void add(String username, String name, String password) {
-//        information.add(username, name, password);
-//    }
 }
