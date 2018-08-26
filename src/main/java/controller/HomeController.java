@@ -25,7 +25,7 @@ public class HomeController {
     }
 
     private void backToLogin(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/login.fxml"));
         stage.setScene(new Scene(fxmlLoader.load(), 404, 550));
         if (account != null) account = null;
         stage.show();
