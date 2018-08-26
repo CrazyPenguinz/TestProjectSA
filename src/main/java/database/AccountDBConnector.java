@@ -42,7 +42,7 @@ public class AccountDBConnector {
             Class.forName(myDriver);
             Connection connection = DriverManager.getConnection(urlDB);
             if (connection != null) {
-                String query =  "select * from Login where Username = '" + username + "' and Password = '" + password + "'";
+                String query =  "select * from Account where Username = '" + username + "' and Password = '" + password + "'";
                 Statement statement = connection.createStatement();
                 ResultSet resultSet = statement.executeQuery(query);
                 if (resultSet.next()) {
@@ -51,6 +51,7 @@ public class AccountDBConnector {
                     String passWord = resultSet.getString("Password");
                     String firstName = resultSet.getString("FirstName");
                     String lastName = resultSet.getString("LastName");
+                    connection.close();
                     return new Account(type, userName, passWord, firstName, lastName);
                 }
             }
@@ -62,4 +63,22 @@ public class AccountDBConnector {
         return null;
     }
 
+    public static void saveAccount(String type, String username,String password, String firstname,String lastname) {
+        try {
+            Class.forName(myDriver);
+            Connection connection = DriverManager.getConnection(urlDB);
+            if (connection != null) {
+                String query = "insert into Login (Type, Username, Password, Firstname, Lastname) values ('" + type + "' , '" + username + "' , '" + password + "' , '" + firstname + "' , '" + lastname + "')";
+                PreparedStatement p = connection.prepareStatement(query);
+                p.executeUpdate();
+            }
+            connection.close();
+        }
+
+        catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
