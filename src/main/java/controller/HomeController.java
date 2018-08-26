@@ -24,6 +24,14 @@ public class HomeController {
         this.backToLogin(stage);
     }
 
+    public void handleAddBtn(ActionEvent event) throws IOException {
+        Button button = (Button) event.getSource();
+        Stage stage = (Stage) button.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/register.fxml"));
+        stage.setScene(new Scene(fxmlLoader.load(), 541, 400));
+
+    }
+
     private void backToLogin(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/login.fxml"));
         stage.setScene(new Scene(fxmlLoader.load(), 404, 550));

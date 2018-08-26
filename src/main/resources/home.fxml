@@ -2,13 +2,15 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
     <columnConstraints>
         <ColumnConstraints />
     </columnConstraints>
@@ -16,14 +18,39 @@
         <RowConstraints />
     </rowConstraints>
     <children>
-        <AnchorPane prefHeight="464.0" prefWidth="465.0">
+        <AnchorPane prefHeight="456.0" prefWidth="574.0">
             <children>
-                <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                <Label layoutX="251.0" layoutY="46.0" prefHeight="29.0" prefWidth="158.0" text="ชื่อ นามสกุล" />
-                <Label layoutX="28.0" layoutY="215.0" prefHeight="17.0" prefWidth="384.0" text="id ชื่อลุกค้า           สถานะ(เช่นกำลังซักหรือซักเสร็จแล้ว)            สถานะ(จ่ายเงิน)" />
-                <Label layoutX="28.0" layoutY="256.0" prefHeight="17.0" prefWidth="384.0" text="id ชื่อลุกค้า           สถานะ(เช่นกำลังซักหรือซักเสร็จแล้ว)            สถานะ(จ่ายเงิน)" />
-                <Label layoutX="28.0" layoutY="296.0" prefHeight="17.0" prefWidth="384.0" text="id ชื่อลุกค้า           สถานะ(เช่นกำลังซักหรือซักเสร็จแล้ว)            สถานะ(จ่ายเงิน)" />
-            <Button fx:id="button" layoutX="200.0" layoutY="365.0" mnemonicParsing="false" onAction="#handleLogoutBtn" text="log out" />
+                <ImageView fitHeight="456.0" fitWidth="594.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@image/homeBackground.png" />
+                    </image>
+                </ImageView>
+                <Label layoutX="87.0" layoutY="33.0" text="Washery Laundry" textFill="#b58b53">
+                    <font>
+                        <Font size="54.0" />
+                    </font>
+                </Label>
+                <Button fx:id="button" layoutX="110.0" layoutY="136.0" mnemonicParsing="false" onAction="#handleAddBtn" prefHeight="108.0" prefWidth="172.0" style="-fx-background-color: #977446;" text="Staff" textFill="#fffffb">
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </Button>
+                <Button layoutX="304.0" layoutY="136.0" mnemonicParsing="false" prefHeight="108.0" prefWidth="172.0" style="-fx-background-color: #977446;" text="Event Log" textFill="#fffffb">
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </Button>
+                <Button layoutX="110.0" layoutY="255.0" mnemonicParsing="false" prefHeight="108.0" prefWidth="172.0" style="-fx-background-color: #977446;" text="Customer" textFill="#fffffb">
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </Button>
+                <Button layoutX="304.0" layoutY="255.0" mnemonicParsing="false" prefHeight="108.0" prefWidth="172.0" style="-fx-background-color: #977446;" text="List Customer" textFill="#fffffb">
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </Button>
+                <Button fx:id="button" layoutX="368.0" layoutY="385.0" mnemonicParsing="false" onAction="#handleLogoutBtn" prefHeight="43.0" prefWidth="108.0" style="-fx-background-color: #977446;" text="Log out" textFill="#fffffb" />
             </children>
         </AnchorPane>
     </children>
