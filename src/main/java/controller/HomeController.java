@@ -5,37 +5,46 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import model.Account;
 
 import java.io.IOException;
 
 public class HomeController {
-    Account account;
+    private Account account;
     @FXML Button button;
+    @FXML Label accountLabel;
 
-    public void loginWith(Account account) {
-        this.account = account;
-    }
 
     public void handleLogoutBtn(ActionEvent event) throws IOException {
         Button button = (Button) event.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
-        this.backToLogin(stage);
-    }
-
-    public void handleAddBtn(ActionEvent event) throws IOException {
-        Button button = (Button) event.getSource();
-        Stage stage = (Stage) button.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/register.fxml"));
-        stage.setScene(new Scene(fxmlLoader.load(), 541, 400));
-
-    }
-
-    private void backToLogin(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/login.fxml"));
         stage.setScene(new Scene(fxmlLoader.load(), 404, 550));
         if (account != null) account = null;
         stage.show();
+    }
+
+    public void handleStaffBtn(ActionEvent event) throws IOException {
+        Button button = (Button) event.getSource();
+        Stage stage = (Stage) button.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/register.fxml"));
+        stage.setScene(new Scene(fxmlLoader.load(), 541, 400));
+        RegisterController registerController = fxmlLoader.getController();
+        registerController.setAccount(account);
+        stage.show();
+    }
+
+    public void setUpAccountLabel() {
+        if (account != null) {
+            accountLabel.setText(account.getType() + " : " + account.getFirstName() + " " + account.getLastName());
+            accountLabel.disabledProperty();
+        }
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+        this.setUpAccountLabel();
     }
 }

@@ -63,12 +63,12 @@ public class AccountDBConnector {
         return null;
     }
 
-    public static void saveAccount(String type, String username,String password, String firstname,String lastname) {
+    public static void addAccount(String type, String username, String password, String firstname, String lastname) {
         try {
             Class.forName(myDriver);
             Connection connection = DriverManager.getConnection(urlDB);
             if (connection != null) {
-                String query = "insert into Login (Type, Username, Password, Firstname, Lastname) values ('" + type + "' , '" + username + "' , '" + password + "' , '" + firstname + "' , '" + lastname + "')";
+                String query = "insert into Account (Type, Username, Password, FirstName, LastName) values ('" + type + "' , '" + username + "' , '" + password + "' , '" + firstname + "' , '" + lastname + "')";
                 PreparedStatement p = connection.prepareStatement(query);
                 p.executeUpdate();
             }
