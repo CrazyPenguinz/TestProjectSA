@@ -27,12 +27,12 @@ public class CheckInput {
         return isCorrect;
     }
 
+
     public static boolean isAllCharacter(TextField textField) {
         boolean isCorrect = true;
         for (int i = 0; i < textField.getText().length(); i++) {
             if (isCorrect) {
-                if ((textField.getText().charAt(i) + "").matches("[a-zA-Z]")) {
-                } else {
+                if (!(textField.getText().charAt(i) + "").matches( "[^-_= %#@!=+\\\\|\\[{\\]};:'\",<>/0-9.]*")) {
                     isCorrect = false;
                     textField.setStyle("-fx-border-color: red");
                     return isCorrect;

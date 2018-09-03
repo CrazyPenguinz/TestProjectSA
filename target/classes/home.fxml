@@ -22,7 +22,7 @@
             <children>
                 <ImageView fitHeight="456.0" fitWidth="594.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@image/homeBackground.png" />
+                        <Image url="@image/borderBackground.png" />
                     </image>
                 </ImageView>
                 <Label layoutX="87.0" layoutY="33.0" text="Washery Laundry" textFill="#b58b53">
