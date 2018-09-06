@@ -13,11 +13,11 @@ import java.io.IOException;
 
 public class HomeController {
     private Account account;
-    @FXML Button button;
-    @FXML Label accountLabel;
+    @FXML private Button button;
+    @FXML private Label accountLabel;
 
 
-    public void handleLogoutBtn(ActionEvent event) throws IOException {
+    public void logoutBtnOnAction(ActionEvent event) throws IOException {
         Button button = (Button) event.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/login.fxml"));
@@ -29,10 +29,10 @@ public class HomeController {
     public void handleStaffBtn(ActionEvent event) throws IOException {
         Button button = (Button) event.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/register.fxml"));
-        stage.setScene(new Scene(fxmlLoader.load(), 541, 400));
-        RegisterController registerController = fxmlLoader.getController();
-        registerController.setAccount(account);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/staffView.fxml"));
+        stage.setScene(new Scene(fxmlLoader.load(), 600, 456));
+        StaffViewController staffViewController = fxmlLoader.getController();
+        staffViewController.setAccount(account);
         stage.show();
     }
 

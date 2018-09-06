@@ -19,10 +19,10 @@ import java.io.IOException;
 import java.sql.*;
 
 public class LoginController {
-    @FXML protected Button button;
-    @FXML protected TextField username;
-    @FXML protected PasswordField password;
-    @FXML protected Label caution;
+    @FXML private Button button;
+    @FXML private TextField username;
+    @FXML private PasswordField password;
+    @FXML private Label caution;
 
     public void initialize() throws SQLException {
         caution.setVisible(false);
@@ -56,7 +56,7 @@ public class LoginController {
         });
     }
 
-    public void handleLoginBtn(ActionEvent event) throws IOException {
+    public void loginBtnOnAction(ActionEvent event) throws IOException {
         Button button = (Button) event.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
         this.checkUsernameAndPassword(stage);

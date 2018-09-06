@@ -11,53 +11,52 @@ import model.Account;
 import utilities.CheckInput;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class RegisterController {
+public class CreateAccountController {
     private Account account;
     @FXML
-    private Button button;
+    private Button backButton, registerButton;
     @FXML
-    private TextField username, firstname, lastname, type;
+    private TextField username, firstName, lastName, type;
     @FXML
     private PasswordField password;
 
-    public void handleRegisterBtnAction(ActionEvent event) throws IOException, SQLException {
+    public void confirmBtnOnAction(ActionEvent event) throws IOException {
         List<Boolean> checkBoolean = new ArrayList<>();
-        checkBoolean.add(CheckInput.isAllCharacter(firstname));
-        checkBoolean.add(CheckInput.isAllCharacter(lastname));
+        checkBoolean.add(CheckInput.isAllCharacter(firstName));
+        checkBoolean.add(CheckInput.isAllCharacter(lastName));
         List<String> checkTextField = new ArrayList<>();
-        checkTextField.add(firstname.getText());
-        checkTextField.add(lastname.getText());
+        checkTextField.add(firstName.getText());
+        checkTextField.add(lastName.getText());
         if(CheckInput.isAllCorrectEmpty(checkTextField) && CheckInput.isAllCorrectType(checkBoolean) && CheckInput.isCorrectUsername(AccountDBConnector.getAccounts(),username)) {
-            AccountDBConnector.addAccount(type.getText(), username.getText(), password.getText(), firstname.getText(), lastname.getText());
+            AccountDBConnector.addAccount(type.getText(), username.getText(), password.getText(), firstName.getText(), lastName.getText());
             Button button = (Button) event.getSource();
             Stage stage = (Stage) button.getScene().getWindow();
             this.resetField();
-            this.backToHome(stage);
+            this.backToStaffTable(stage);
         }
     }
 
-    public void handleBackBtn(ActionEvent event) throws IOException {
+    public void backBtnOnAction(ActionEvent event) throws IOException {
         Button buttonBack = (Button) event.getSource();
         Stage stage = (Stage) buttonBack.getScene().getWindow();
-        this.backToHome(stage);
+        this.backToStaffTable(stage);
     }
 
-    private void backToHome(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/home.fxml"));
+    private void backToStaffTable(Stage stage) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/staffView.fxml"));
         stage.setScene(new Scene(fxmlLoader.load(), 574, 456));
-        HomeController homeController = fxmlLoader.getController();
-        homeController.setAccount(account);
+        StaffViewController staffViewController = fxmlLoader.getController();
+        staffViewController.setAccount(account);
         stage.show();
     }
 
     private void resetField() {
-        firstname.setText("");
-        lastname.setText("");
+        firstName.setText("");
+        lastName.setText("");
         username.setText("");
         password.setText("");
         type.setText("");

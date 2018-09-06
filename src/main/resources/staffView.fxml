@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="456.0" prefWidth="574.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StaffViewController">
+   <children>
+      <TableView fx:id="accountTableView" layoutX="97.0" prefHeight="400.0" prefWidth="503.0">
+        <columns>
+          <TableColumn fx:id="type" prefWidth="111.0" text="Account Type" />
+          <TableColumn fx:id="firstName" editable="false" prefWidth="195.0" resizable="false" text="First Name" />
+            <TableColumn fx:id="lastName" editable="false" prefWidth="195.0" resizable="false" text="Last Name" />
+        </columns>
+      </TableView>
+      <Pane prefHeight="456.0" prefWidth="97.0" style="-fx-background-color: #b58b53;">
+         <children>
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#backBtnOnAction" prefHeight="62.0" prefWidth="97.0" style="-fx-background-color: #b58b53;" text="Back">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="33.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/backwardbutton.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </Pane>
+      <Button fx:id="addButton" layoutX="493.0" layoutY="417.0" mnemonicParsing="false" onAction="#addBtnOnAction" prefHeight="25.0" prefWidth="75.0" text="Add" />
+   </children>
+</AnchorPane>

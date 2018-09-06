@@ -10,7 +10,7 @@ public class AccountDBConnector {
     private static String myDriver = "org.sqlite.JDBC";
     private static String urlDB = "jdbc:sqlite:Database.db";
 
-    public static ObservableList getAccounts() throws SQLException {
+    public static ObservableList getAccounts() {
         ObservableList<Account> accounts = FXCollections.observableArrayList();
         try {
             Class.forName(myDriver);
@@ -63,12 +63,12 @@ public class AccountDBConnector {
         return null;
     }
 
-    public static void addAccount(String type, String username, String password, String firstname, String lastname) {
+    public static void addAccount(String type, String username, String password, String firstName, String lastName) {
         try {
             Class.forName(myDriver);
             Connection connection = DriverManager.getConnection(urlDB);
             if (connection != null) {
-                String query = "insert into Account (Type, Username, Password, FirstName, LastName) values ('" + type + "' , '" + username + "' , '" + password + "' , '" + firstname + "' , '" + lastname + "')";
+                String query = "insert into Account (Type, Username, Password, FirstName, LastName) values ('" + type + "' , '" + username + "' , '" + password + "' , '" + firstName + "' , '" + lastName + "')";
                 PreparedStatement p = connection.prepareStatement(query);
                 p.executeUpdate();
             }
@@ -81,4 +81,6 @@ public class AccountDBConnector {
             e.printStackTrace();
         }
     }
+
+//    public static void deleteAccount(String )
 }

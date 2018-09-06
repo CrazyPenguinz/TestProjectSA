@@ -50,7 +50,7 @@
                         <Font size="22.0" />
                     </font>
                 </Button>
-                <Button fx:id="button" layoutX="368.0" layoutY="385.0" mnemonicParsing="false" onAction="#handleLogoutBtn" prefHeight="43.0" prefWidth="108.0" style="-fx-background-color: #977446;" text="Log out" textFill="#fffffb" />
+                <Button fx:id="button" layoutX="368.0" layoutY="385.0" mnemonicParsing="false" onAction="#logoutBtnOnAction" prefHeight="43.0" prefWidth="108.0" style="-fx-background-color: #977446;" text="Log out" textFill="#fffffb" />
             <Label fx:id="accountLabel" layoutX="39.0" layoutY="385.0" prefHeight="43.0" prefWidth="322.0">
                <font>
                   <Font size="18.0" />
