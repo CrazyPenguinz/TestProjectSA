@@ -30,7 +30,7 @@
                         <Font size="54.0" />
                     </font>
                 </Label>
-                <Button fx:id="button" layoutX="110.0" layoutY="136.0" mnemonicParsing="false" onAction="#handleStaffBtn" prefHeight="108.0" prefWidth="172.0" style="-fx-background-color: #977446;" text="Staff" textFill="#fffffb">
+                <Button fx:id="button" layoutX="110.0" layoutY="136.0" mnemonicParsing="false" onAction="#staffBtnOnAction" prefHeight="108.0" prefWidth="172.0" style="-fx-background-color: #977446;" text="Staff" textFill="#fffffb">
                     <font>
                         <Font size="22.0" />
                     </font>

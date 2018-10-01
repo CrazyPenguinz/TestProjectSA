@@ -26,13 +26,23 @@ public class HomeController {
         stage.show();
     }
 
-    public void handleStaffBtn(ActionEvent event) throws IOException {
+    public void staffBtnOnAction(ActionEvent event) throws IOException {
         Button button = (Button) event.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/staffView.fxml"));
         stage.setScene(new Scene(fxmlLoader.load(), 600, 456));
         StaffViewController staffViewController = fxmlLoader.getController();
         staffViewController.setAccount(account);
+        stage.show();
+    }
+
+    public void orderBtnOnAction(ActionEvent event) throws IOException {
+        Button button = (Button) event.getSource();
+        Stage stage = (Stage) button.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/order.fxml"));
+        stage.setScene(new Scene(fxmlLoader.load(), 404, 550));
+        OrderController orderController = fxmlLoader.getController();
+        orderController.setAccount(account);
         stage.show();
     }
 

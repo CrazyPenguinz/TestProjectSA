@@ -82,5 +82,20 @@ public class AccountDBConnector {
         }
     }
 
-//    public static void deleteAccount(String )
+    public static void deleteAccount(String username) {
+        try {
+            Class.forName(myDriver);
+            Connection connection = DriverManager.getConnection(urlDB);
+            if (connection != null) {
+                String query = "delete from Account where Username == '" + username + "'";
+                PreparedStatement p = connection.prepareStatement(query);
+                p.executeUpdate();
+                connection.close();
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

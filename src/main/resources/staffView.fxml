@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="456.0" prefWidth="574.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StaffViewController">
    <children>
       <TableView fx:id="accountTableView" layoutX="97.0" prefHeight="400.0" prefWidth="503.0">
@@ -36,5 +35,6 @@
          </children>
       </Pane>
       <Button fx:id="addButton" layoutX="493.0" layoutY="417.0" mnemonicParsing="false" onAction="#addBtnOnAction" prefHeight="25.0" prefWidth="75.0" text="Add" />
+      <Button fx:id="deleteButton" layoutX="122.0" layoutY="417.0" mnemonicParsing="false" onAction="#deleteBtnOnAction" text="Delete" />
    </children>
 </AnchorPane>

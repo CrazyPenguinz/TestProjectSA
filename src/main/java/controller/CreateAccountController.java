@@ -20,9 +20,16 @@ public class CreateAccountController {
     @FXML
     private Button backButton, registerButton;
     @FXML
-    private TextField username, firstName, lastName, type;
+    private TextField username, firstName, lastName;
     @FXML
     private PasswordField password;
+    @FXML
+    private ChoiceBox<String> roleBox = new ChoiceBox<>();
+
+    public void initialize() {
+        roleBox.getItems().addAll("Staff", "Supervisor");
+        roleBox.setValue("Staff");
+    }
 
     public void confirmBtnOnAction(ActionEvent event) throws IOException {
         List<Boolean> checkBoolean = new ArrayList<>();
@@ -32,7 +39,7 @@ public class CreateAccountController {
         checkTextField.add(firstName.getText());
         checkTextField.add(lastName.getText());
         if(CheckInput.isAllCorrectEmpty(checkTextField) && CheckInput.isAllCorrectType(checkBoolean) && CheckInput.isCorrectUsername(AccountDBConnector.getAccounts(),username)) {
-            AccountDBConnector.addAccount(type.getText(), username.getText(), password.getText(), firstName.getText(), lastName.getText());
+            AccountDBConnector.addAccount(roleBox.getValue(), username.getText(), password.getText(), firstName.getText(), lastName.getText());
             Button button = (Button) event.getSource();
             Stage stage = (Stage) button.getScene().getWindow();
             this.resetField();
@@ -59,7 +66,7 @@ public class CreateAccountController {
         lastName.setText("");
         username.setText("");
         password.setText("");
-        type.setText("");
+        roleBox.setValue("");
     }
 
     public void setAccount(Account account) {
