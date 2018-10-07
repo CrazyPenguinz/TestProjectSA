@@ -52,7 +52,6 @@ public class StaffViewController {
         if (accountTableView.getSelectionModel().getSelectedItem() != null) {
             String username = accountTableView.getSelectionModel().getSelectedItem().getUsername();
             String password = accountTableView.getSelectionModel().getSelectedItem().getPassword();
-//            Optional<String> result =
             AccountDBConnector.deleteAccount(username);
             if (username.equals(account.getUsername()) && password.equals(account.getPassword())) {
                 Button button = (Button) event.getSource();

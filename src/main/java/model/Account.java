@@ -34,4 +34,15 @@ public class Account {
     public String getLastName() {
         return lastName;
     }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "type='" + type + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
+    }
 }

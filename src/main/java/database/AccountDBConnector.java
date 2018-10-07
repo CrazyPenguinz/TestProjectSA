@@ -21,11 +21,11 @@ public class AccountDBConnector {
                 ResultSet resultSet = statement.executeQuery(query);
                 while (resultSet.next()) {
                     String type = resultSet.getString("Type");
-                    String firstName = resultSet.getString("FirstName");
-                    String lastName = resultSet.getString("LastName");
                     String username = resultSet.getString("Username");
                     String password = resultSet.getString("Password");
-                    accounts.add(new Account(type, firstName, lastName, username, password));
+                    String firstName = resultSet.getString("FirstName");
+                    String lastName = resultSet.getString("LastName");
+                    accounts.add(new Account(type, username, password, firstName, lastName));
                 }
                 connection.close();
             }
