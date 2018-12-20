@@ -40,7 +40,9 @@ public class HomeController {
         Button button = (Button) event.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/createClothType.fxml"));
-        stage.setScene(new Scene(fxmlLoader.load(), 404, 550));
+        stage.setScene(new Scene(fxmlLoader.load(), 530, 291));
+        CreateClothTypeController createClothTypeController = fxmlLoader.getController();
+        createClothTypeController.setEmployee(employee);
         stage.show();
     }
 

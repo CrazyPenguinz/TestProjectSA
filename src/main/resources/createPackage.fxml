@@ -14,7 +14,7 @@
    <children>
       <Pane prefHeight="44.0" prefWidth="520.0" style="-fx-background-color: #DAA520;">
          <children>
-            <Label fx:id="emp" layoutX="400.0" layoutY="6.0" prefHeight="14.0" prefWidth="106.0" text="ชื่อ manager" />
+            <Label fx:id="account" layoutX="400.0" layoutY="6.0" prefHeight="14.0" prefWidth="106.0" text="ชื่อ manager" />
          </children></Pane>
       <Pane layoutY="-12.0" prefHeight="303.0" prefWidth="55.0" style="-fx-background-color: #DAA520;">
          <children>

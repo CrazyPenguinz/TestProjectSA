@@ -22,7 +22,7 @@ public class CreatePackageController {
     @FXML private ImageView back;
     @FXML private TextField amount, price;
     @FXML private DatePicker expire;
-    @FXML private Label cautionDate, cautionAmount, cautionPrice, emp;
+    @FXML private Label cautionDate, cautionAmount, cautionPrice, account;
 
     public void initialize() {
         back.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -111,7 +111,7 @@ public class CreatePackageController {
 
     private void setupLabel() {
         if (employee != null) {
-            emp.setText(employee.getFirstName() + " " + employee.getLastName());
+            account.setText(employee.getFirstName() + " " + employee.getLastName());
         }
     }
 
