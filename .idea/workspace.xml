@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="14bd3081-a9b1-4e54-adbf-ea5938f9fe55" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/CreateBillController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/CreateClothTypeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/CreatePackageController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/CustomerPaymentController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/database/PackageDBConnector.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/createBill.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/createClothType.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/createPackage.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/customerPayment.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/newCustomer.fxml" afterDir="false" />
+    <list default="true" id="14bd3081-a9b1-4e54-adbf-ea5938f9fe55" name="Default Changelist" comment="finish use case create package">
       <change afterPath="$PROJECT_DIR$/../mockito-demo-master/src/test/java/csku/mockitodemo/atm/BankMockTest.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../mockito-demo-master/src/test/java/csku/mockitodemo/hr/HumanResourceServiceTestMock.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../springjdbc/.idea/compiler.xml" afterDir="false" />
@@ -30,22 +20,6 @@
       <change beforePath="$PROJECT_DIR$/../DesignPatterns/src/compositePattern/DuckSimulator.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../DesignPatterns/src/compositePattern/Flock.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database.db" beforeDir="false" afterPath="$PROJECT_DIR$/Database.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/CreateAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/CreateAccountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/StaffViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/EmployeeViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/AccountDBConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/EmployeeDBConnector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utilities/CheckInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utilities/CheckInput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/home.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/staffView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/staffView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/HomeController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/database/AccountDBConnector.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/home.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/Account.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -131,14 +105,14 @@
           <entry key="dummy" value="20" />
           <entry key="fxml" value="30" />
           <entry key="java" value="3106" />
-          <entry key="txt" value="71" />
+          <entry key="txt" value="105" />
           <entry key="xml" value="15" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JAVA" value="3106" />
-          <entry key="PLAIN_TEXT" value="91" />
+          <entry key="PLAIN_TEXT" value="125" />
           <entry key="XML" value="45" />
         </counts>
       </usages-collector>
@@ -191,8 +165,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/controller/CreatePackageController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="101" column="32" lean-forward="true" selection-start-line="101" selection-start-column="32" selection-end-line="101" selection-end-column="32" />
+            <state relative-caret-position="517">
+              <caret line="103" lean-forward="true" selection-start-line="103" selection-end-line="103" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1581#1582#0" expanded="true" />
@@ -346,7 +320,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545321338264" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545321564899" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/5910451014-lab11" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -489,14 +463,21 @@
       <option name="project" value="LOCAL" />
       <updated>1538940761815</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="finish use case create package">
+      <created>1545321548498</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1545321548498</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19829424" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19829424" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -505,7 +486,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.27657267" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.27657267" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -566,7 +547,8 @@
     <MESSAGE value="create staff table" />
     <MESSAGE value="create function order" />
     <MESSAGE value="edit delete account function" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit delete account function" />
+    <MESSAGE value="finish use case create package" />
+    <option name="LAST_COMMIT_MESSAGE" value="finish use case create package" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/README.md" />
@@ -812,8 +794,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/CreatePackageController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="101" column="32" lean-forward="true" selection-start-line="101" selection-start-column="32" selection-end-line="101" selection-end-column="32" />
+        <state relative-caret-position="517">
+          <caret line="103" lean-forward="true" selection-start-line="103" selection-end-line="103" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1581#1582#0" expanded="true" />
