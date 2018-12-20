@@ -5,10 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import model.Employee;
 import utilities.CheckInput;
@@ -46,6 +43,11 @@ public class CreateAccountController {
             Button button = (Button) event.getSource();
             Stage stage = (Stage) button.getScene().getWindow();
             this.resetField();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Washery Laundry");
+            alert.setHeaderText(null);
+            alert.setContentText("Add Completed");
+            alert.showAndWait();
             this.backToStaffTable(stage);
         }
     }

@@ -30,21 +30,26 @@
                         <Font size="54.0" />
                     </font>
                 </Label>
-                <Button fx:id="button" layoutX="110.0" layoutY="136.0" mnemonicParsing="false" onAction="#employeeBtnOnAction" prefHeight="63.0" prefWidth="369.0" style="-fx-background-color: #977446;" text="Employee" textFill="#fffffb">
+                <Button fx:id="button" layoutX="110.0" layoutY="136.0" mnemonicParsing="false" onAction="#employeeBtnOnAction" prefHeight="43.0" prefWidth="369.0" style="-fx-background-color: #977446;" text="Employee" textFill="#fffffb">
                     <font>
                         <Font size="22.0" />
                     </font>
                 </Button>
-                <Button fx:id="button" layoutX="110.0" layoutY="212.0" mnemonicParsing="false" onAction="#clothTypeBtnOnAction" prefHeight="63.0" prefWidth="369.0" style="-fx-background-color: #977446;" text="Cloth Type" textFill="#fffffb">
+                <Button fx:id="button" layoutX="110.0" layoutY="197.0" mnemonicParsing="false" onAction="#clothTypeBtnOnAction" prefHeight="48.0" prefWidth="369.0" style="-fx-background-color: #977446;" text="Cloth Type" textFill="#fffffb">
                     <font>
                         <Font size="22.0" />
                     </font>
                 </Button>
-                <Button fx:id="button" layoutX="110.0" layoutY="287.0" mnemonicParsing="false" onAction="#packageBtnOnAction" prefHeight="63.0" prefWidth="369.0" style="-fx-background-color: #977446;" text="Package" textFill="#fffffb">
+                <Button fx:id="button" layoutX="110.0" layoutY="255.0" mnemonicParsing="false" onAction="#packageBtnOnAction" prefHeight="48.0" prefWidth="369.0" style="-fx-background-color: #977446;" text="Package" textFill="#fffffb">
                     <font>
                         <Font size="22.0" />
                     </font>
                 </Button>
+            <Button fx:id="button" layoutX="110.0" layoutY="316.0" mnemonicParsing="false" onAction="#defineCouponOnAction" prefHeight="48.0" prefWidth="369.0" style="-fx-background-color: #977446;" text="Define Coupon Per Cloth Type" textFill="#fffffb">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Button>
                 <Button fx:id="button" layoutX="368.0" layoutY="385.0" mnemonicParsing="false" onAction="#logoutBtnOnAction" prefHeight="43.0" prefWidth="108.0" style="-fx-background-color: #977446;" text="Log out" textFill="#fffffb" />
             <Label fx:id="accountLabel" layoutX="39.0" layoutY="385.0" prefHeight="43.0" prefWidth="322.0">
                <font>

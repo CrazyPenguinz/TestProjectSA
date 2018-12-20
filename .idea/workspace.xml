@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="14bd3081-a9b1-4e54-adbf-ea5938f9fe55" name="Default Changelist" comment="finish use case create package">
-      <change afterPath="$PROJECT_DIR$/src/main/java/database/ClothTypeDBConnector.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/defineCouponPerClothType.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/DefineCouponController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/ClothType.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../mockito-demo-master/src/test/java/csku/mockitodemo/atm/BankMockTest.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../mockito-demo-master/src/test/java/csku/mockitodemo/hr/HumanResourceServiceTestMock.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../springjdbc/.idea/compiler.xml" afterDir="false" />
@@ -23,11 +23,16 @@
       <change beforePath="$PROJECT_DIR$/../DesignPatterns/src/compositePattern/Flock.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Database.db" beforeDir="false" afterPath="$PROJECT_DIR$/Database.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/CreateClothTypeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/CreateClothTypeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/CreatePackageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/CreatePackageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/CreateAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/CreateAccountController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/EmployeeViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/EmployeeViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/createClothType.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/createClothType.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/createPackage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/createPackage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/database/ClothTypeDBConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/ClothTypeDBConnector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/defineCouponPerClothType.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/defineCouponPerClothType.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/home.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/HomeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/database/ClothTypeDBConnector.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/database/ClothTypeDBConnector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/defineCouponPerClothType.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/defineCouponPerClothType.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/home.fxml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -97,31 +102,31 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="fxml" value="18" />
-          <entry key="java" value="23" />
-          <entry key="xml" value="2" />
+          <entry key="fxml" value="19" />
+          <entry key="java" value="28" />
+          <entry key="xml" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="23" />
-          <entry key="XML" value="20" />
+          <entry key="JAVA" value="28" />
+          <entry key="XML" value="22" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="20" />
-          <entry key="fxml" value="36" />
-          <entry key="java" value="4158" />
+          <entry key="fxml" value="40" />
+          <entry key="java" value="6141" />
           <entry key="txt" value="105" />
           <entry key="xml" value="15" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="4158" />
+          <entry key="JAVA" value="6141" />
           <entry key="PLAIN_TEXT" value="125" />
-          <entry key="XML" value="51" />
+          <entry key="XML" value="55" />
         </counts>
       </usages-collector>
     </session>
@@ -155,17 +160,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/database/ClothTypeDBConnector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
-              <caret line="21" column="44" lean-forward="true" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/controller/CreateClothTypeController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="410">
-              <caret line="57" column="13" lean-forward="true" selection-start-line="57" selection-start-column="13" selection-end-line="57" selection-end-column="13" />
+            <state relative-caret-position="381">
+              <caret line="57" column="57" lean-forward="true" selection-start-line="57" selection-start-column="57" selection-end-line="57" selection-end-column="57" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -174,10 +170,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/controller/CreatePackageController.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/controller/DefineCouponController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="551">
-              <caret line="93" column="32" lean-forward="true" selection-start-line="89" selection-start-column="12" selection-end-line="93" selection-end-column="32" />
+            <state relative-caret-position="483">
+              <caret line="74" column="49" selection-start-line="74" selection-start-column="49" selection-end-line="74" selection-end-column="49" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/controller/CreateClothTypeController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="449">
+              <caret line="44" column="5" lean-forward="true" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -188,8 +196,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/controller/HomeController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="42" column="55" selection-start-line="42" selection-start-column="55" selection-end-line="42" selection-end-column="55" />
+            <state relative-caret-position="228">
+              <caret line="62" selection-start-line="62" selection-end-line="62" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/controller/EmployeeViewController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="211">
+              <caret line="57" column="62" selection-start-line="57" selection-start-column="62" selection-end-line="57" selection-end-column="62" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#4092#4093#0" expanded="true" />
+                <element signature="e#4132#4133#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -235,18 +257,22 @@
         <option value="$PROJECT_DIR$/src/main/java/controller/CustomerPaymentController.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/Employee.java" />
         <option value="$PROJECT_DIR$/src/main/java/database/EmployeeDBConnector.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/CreateAccountController.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/LoginController.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/StaffViewController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/EmployeeViewController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/createBill.fxml" />
         <option value="$PROJECT_DIR$/src/main/resources/createPackage.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/database/PackageDBConnector.java" />
         <option value="$PROJECT_DIR$/src/main/resources/createClothType.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/controller/CreatePackageController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/HomeController.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/CreateClothTypeController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/defineCouponPerClothType.fxml" />
+        <option value="$PROJECT_DIR$/src/main/java/model/ClothType.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/HomeController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/database/PriceDBConnector.java" />
         <option value="$PROJECT_DIR$/src/main/java/database/ClothTypeDBConnector.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/DefineCouponController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/CreateAccountController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/EmployeeViewController.java" />
       </list>
     </option>
   </component>
@@ -258,9 +284,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-7" />
-    <option name="width" value="974" />
-    <option name="height" value="1047" />
+    <option name="x" value="2" />
+    <option name="y" value="152" />
+    <option name="width" value="1330" />
+    <option name="height" value="704" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -336,7 +363,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545326975420" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545337450469" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/5910451014-lab11" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -493,7 +520,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19829424" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19829424" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -502,7 +529,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.27657267" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.27657267" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -633,13 +660,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/deleteAccount.fxml" />
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/DeleteAccountController.java" />
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -654,13 +674,6 @@
         </state>
       </provider>
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/CreateAccountController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="32" column="51" selection-start-line="32" selection-start-column="51" selection-end-line="32" selection-end-column="51" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/model/Employee.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -680,16 +693,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="653">
           <caret line="93" column="56" selection-start-line="93" selection-start-column="56" selection-end-line="93" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/EmployeeViewController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-299">
-          <caret line="18" column="21" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -766,10 +769,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/defineCouponPerClothType.fxml">
-      <provider editor-type-id="text-editor" />
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/createClothType.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -788,17 +787,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/HomeController.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="42" column="55" selection-start-line="42" selection-start-column="55" selection-end-line="42" selection-end-column="55" />
+        <state relative-caret-position="340">
+          <caret line="20" column="18" lean-forward="true" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/database/EmployeeDBConnector.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/defineCouponPerClothType.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="72" column="31" selection-start-line="72" selection-start-column="31" selection-end-line="72" selection-end-column="31" />
+        <state relative-caret-position="204">
+          <caret line="12" column="259" selection-start-line="12" selection-start-column="259" selection-end-line="12" selection-end-column="259" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/ClothType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+          <folding>
+            <element signature="e#230#231#0" expanded="true" />
+            <element signature="e#257#258#0" expanded="true" />
+            <element signature="e#287#288#0" expanded="true" />
+            <element signature="e#316#317#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/database/PriceDBConnector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="58" selection-start-line="11" selection-start-column="58" selection-end-line="11" selection-end-column="58" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -817,17 +837,66 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/database/ClothTypeDBConnector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="21" column="44" lean-forward="true" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
+        <state relative-caret-position="381">
+          <caret line="57" column="57" lean-forward="true" selection-start-line="57" selection-start-column="57" selection-end-line="57" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/database/EmployeeDBConnector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="72" column="31" selection-start-line="72" selection-start-column="31" selection-end-line="72" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/CreateClothTypeController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="57" column="13" lean-forward="true" selection-start-line="57" selection-start-column="13" selection-end-line="57" selection-end-column="13" />
+        <state relative-caret-position="449">
+          <caret line="44" column="5" lean-forward="true" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/CreateAccountController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="49" column="32" selection-start-line="49" selection-start-column="32" selection-end-line="49" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/HomeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="62" selection-start-line="62" selection-end-line="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/DefineCouponController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="74" column="49" selection-start-line="74" selection-start-column="49" selection-end-line="74" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/EmployeeViewController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="57" column="62" selection-start-line="57" selection-start-column="62" selection-end-line="57" selection-end-column="62" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4092#4093#0" expanded="true" />
+            <element signature="e#4132#4133#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -56,6 +56,15 @@ public class HomeController {
         stage.show();
     }
 
+    public void defineCouponOnAction(ActionEvent event) throws IOException {
+        Button button = (Button) event.getSource();
+        Stage stage = (Stage) button.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/defineCouponPerClothType.fxml"));
+        stage.setScene(new Scene(fxmlLoader.load(), 520, 291));
+        DefineCouponController defineCouponController = fxmlLoader.getController();
+        defineCouponController.setEmployee(employee);
+    }
+
     private void setUpAccountLabel() {
         if (employee != null) {
             accountLabel.setText(employee.getType() + " : " + employee.getFirstName() + " " + employee.getLastName());

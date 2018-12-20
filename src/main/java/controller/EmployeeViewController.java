@@ -7,14 +7,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Employee;
 
 import java.io.IOException;
+import java.util.Optional;
 
 public class EmployeeViewController {
     private Employee employee;
@@ -51,6 +50,15 @@ public class EmployeeViewController {
         if (accountTableView.getSelectionModel().getSelectedItem() != null) {
             String username = accountTableView.getSelectionModel().getSelectedItem().getUsername();
             String password = accountTableView.getSelectionModel().getSelectedItem().getPassword();
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Washery Laundry");
+            alert.setHeaderText("CAUTION! YOU CHOOSE TO DELETE ACCOUNT");
+            alert.setContentText("Are you sure to delete?");
+
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.CANCEL) {
+                return;
+            }
             EmployeeDBConnector.deleteAccount(username);
             if (username.equals(employee.getUsername()) && password.equals(employee.getPassword())) {
                 Button button = (Button) event.getSource();
