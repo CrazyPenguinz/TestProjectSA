@@ -1,12 +1,8 @@
 package utilities;
 
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-import model.Account;
+import model.Employee;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
 
 public class CheckInput {
@@ -60,8 +56,8 @@ public class CheckInput {
         return true;
     }
 
-    public static boolean isCorrectUsername(List<Account> list, TextField textField) {
-        for (Account i:list) {
+    public static boolean isCorrectUsername(List<Employee> list, TextField textField) {
+        for (Employee i:list) {
             if (i.getUsername().equals(textField.getText())) {
                 textField.setStyle("-fx-border-color: red");
                 return false;

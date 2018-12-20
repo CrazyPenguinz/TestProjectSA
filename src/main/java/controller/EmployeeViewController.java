@@ -1,6 +1,6 @@
 package controller;
 
-import database.AccountDBConnector;
+import database.EmployeeDBConnector;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -12,25 +12,24 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import model.Account;
+import model.Employee;
 
 import java.io.IOException;
-import java.util.Optional;
 
-public class StaffViewController {
-    private Account account;
-    @FXML private TableView<Account> accountTableView;
+public class EmployeeViewController {
+    private Employee employee;
+    @FXML private TableView<Employee> accountTableView;
     @FXML private TableColumn type, firstName, lastName;
     @FXML private Button addButton, backButton, deleteButton;
 
     public void initialize() {
-        type.setCellValueFactory(new PropertyValueFactory<Account, String>("type"));
-        firstName.setCellValueFactory(new PropertyValueFactory<Account, String>("firstName"));
-        lastName.setCellValueFactory(new PropertyValueFactory<Account, String>("lastName"));
-        accountTableView.setItems(AccountDBConnector.getAccounts());
-        accountTableView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Account>() {
+        type.setCellValueFactory(new PropertyValueFactory<Employee, String>("type"));
+        firstName.setCellValueFactory(new PropertyValueFactory<Employee, String>("firstName"));
+        lastName.setCellValueFactory(new PropertyValueFactory<Employee, String>("lastName"));
+        accountTableView.setItems(EmployeeDBConnector.getAccounts());
+        accountTableView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Employee>() {
             @Override
-            public void changed(ObservableValue<? extends Account> observable, Account oldValue, Account newValue) {
+            public void changed(ObservableValue<? extends Employee> observable, Employee oldValue, Employee newValue) {
                 deleteButton.setDisable(false);
             }
         });
@@ -52,13 +51,13 @@ public class StaffViewController {
         if (accountTableView.getSelectionModel().getSelectedItem() != null) {
             String username = accountTableView.getSelectionModel().getSelectedItem().getUsername();
             String password = accountTableView.getSelectionModel().getSelectedItem().getPassword();
-            AccountDBConnector.deleteAccount(username);
-            if (username.equals(account.getUsername()) && password.equals(account.getPassword())) {
+            EmployeeDBConnector.deleteAccount(username);
+            if (username.equals(employee.getUsername()) && password.equals(employee.getPassword())) {
                 Button button = (Button) event.getSource();
                 Stage stage = (Stage) button.getScene().getWindow();
                 backToLogin(stage);
             }
-            accountTableView.setItems(AccountDBConnector.getAccounts());
+            accountTableView.setItems(EmployeeDBConnector.getAccounts());
         }
     }
 
@@ -72,7 +71,7 @@ public class StaffViewController {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/home.fxml"));
         stage.setScene(new Scene(fxmlLoader.load(), 574, 456));
         HomeController homeController = fxmlLoader.getController();
-        homeController.setAccount(account);
+        homeController.setEmployee(employee);
         stage.show();
     }
 
@@ -80,11 +79,11 @@ public class StaffViewController {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/createAccount.fxml"));
         stage.setScene(new Scene(fxmlLoader.load(), 541, 400));
         CreateAccountController createAccountController = fxmlLoader.getController();
-        createAccountController.setAccount(account);
+        createAccountController.setEmployee(employee);
         stage.show();
     }
 
-    public void setAccount(Account account) {
-        this.account = account;
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 }

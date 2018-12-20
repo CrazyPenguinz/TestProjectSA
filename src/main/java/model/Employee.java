@@ -1,14 +1,16 @@
 package model;
 
-public class Account {
+public class Employee {
     private String type;
+    private int id;
     private String username;
     private String password;
     private String firstName;
     private String lastName;
 
-    public Account(String type, String username, String password, String firstName, String lastName) {
+    public Employee(String type, int id, String username, String password, String firstName, String lastName) {
         this.type = type;
+        this.id = id;
         this.username = username;
         this.password = password;
         this.firstName = firstName;
@@ -17,6 +19,10 @@ public class Account {
 
     public String getType() {
         return type;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getUsername() {
@@ -37,8 +43,9 @@ public class Account {
 
     @Override
     public String toString() {
-        return "Account{" +
+        return "Employee{" +
                 "type='" + type + '\'' +
+                ", id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", firstName='" + firstName + '\'' +

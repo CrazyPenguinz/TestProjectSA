@@ -1,13 +1,16 @@
 package controller;
 
-import database.AccountDBConnector;
+import database.EmployeeDBConnector;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import model.Account;
+import model.Employee;
 import utilities.CheckInput;
 
 import java.io.IOException;
@@ -16,7 +19,7 @@ import java.util.List;
 
 
 public class CreateAccountController {
-    private Account account;
+    private Employee employee;
     @FXML
     private Button backButton, registerButton;
     @FXML
@@ -27,7 +30,7 @@ public class CreateAccountController {
     private ChoiceBox<String> roleBox = new ChoiceBox<>();
 
     public void initialize() {
-        roleBox.getItems().addAll("Staff", "Supervisor");
+        roleBox.getItems().addAll("Staff", "Manager");
         roleBox.setValue("Staff");
     }
 
@@ -38,8 +41,8 @@ public class CreateAccountController {
         List<String> checkTextField = new ArrayList<>();
         checkTextField.add(firstName.getText());
         checkTextField.add(lastName.getText());
-        if(CheckInput.isAllCorrectEmpty(checkTextField) && CheckInput.isAllCorrectType(checkBoolean) && CheckInput.isCorrectUsername(AccountDBConnector.getAccounts(),username)) {
-            AccountDBConnector.addAccount(roleBox.getValue(), username.getText(), password.getText(), firstName.getText(), lastName.getText());
+        if(CheckInput.isAllCorrectEmpty(checkTextField) && CheckInput.isAllCorrectType(checkBoolean) && CheckInput.isCorrectUsername(EmployeeDBConnector.getAccounts(),username)) {
+            EmployeeDBConnector.addAccount(roleBox.getValue(), username.getText(), password.getText(), firstName.getText(), lastName.getText());
             Button button = (Button) event.getSource();
             Stage stage = (Stage) button.getScene().getWindow();
             this.resetField();
@@ -56,8 +59,8 @@ public class CreateAccountController {
     private void backToStaffTable(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/staffView.fxml"));
         stage.setScene(new Scene(fxmlLoader.load(), 574, 456));
-        StaffViewController staffViewController = fxmlLoader.getController();
-        staffViewController.setAccount(account);
+        EmployeeViewController employeeViewController = fxmlLoader.getController();
+        employeeViewController.setEmployee(employee);
         stage.show();
     }
 
@@ -69,7 +72,7 @@ public class CreateAccountController {
         roleBox.setValue("");
     }
 
-    public void setAccount(Account account) {
-        this.account = account;
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 }

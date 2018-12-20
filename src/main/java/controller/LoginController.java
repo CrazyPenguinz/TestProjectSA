@@ -1,6 +1,6 @@
 package controller;
 
-import database.AccountDBConnector;
+import database.EmployeeDBConnector;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -13,7 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import model.Account;
+import model.Employee;
 
 import java.io.IOException;
 import java.sql.*;
@@ -66,10 +66,13 @@ public class LoginController {
         boolean loginStatus = false;
         username.getText();
         password.getText();
-        Account account = AccountDBConnector.isLogin(username.getText(),password.getText());
-        if (account != null) {
+        Employee employee = EmployeeDBConnector.isLogin(username.getText(),password.getText());
+        if (employee != null) {
             loginStatus = true;
-            this.loginToHome(stage, account);
+            if (employee.getType().equals("Staff"))
+                this.loginWithStaff(stage, employee);
+            else if (employee.getType().equals("Manager"))
+                this.loginWithManager(stage, employee);
         }
         if (!loginStatus) {
             caution.setVisible(true);
@@ -77,11 +80,20 @@ public class LoginController {
         }
     }
 
-    private void loginToHome(Stage stage, Account account) throws IOException {
+    private void loginWithStaff(Stage stage, Employee employee) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/customerPayment.fxml"));
+        stage.setScene(new Scene(loader.load(), 574, 455));
+        CustomerPaymentController customerPaymentController = loader.getController();
+        customerPaymentController.setEmployee(employee);
+        caution.setVisible(false);
+        stage.show();
+    }
+
+    private void loginWithManager(Stage stage, Employee employee) throws IOException {
         FXMLLoader loader = new FXMLLoader( getClass().getResource("/home.fxml"));
-        stage.setScene(new Scene(loader.load(), 574, 456));
+        stage.setScene(new Scene(loader.load(), 574, 455));
         HomeController homeController = loader.getController();
-        homeController.setAccount(account);
+        homeController.setEmployee(employee);
         caution.setVisible(false);
         stage.show();
     }

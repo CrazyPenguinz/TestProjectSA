@@ -7,12 +7,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import model.Account;
+import model.Employee;
 
 import java.io.IOException;
 
 public class HomeController {
-    private Account account;
+    private Employee employee;
     @FXML private Button button;
     @FXML private Label accountLabel;
 
@@ -22,39 +22,47 @@ public class HomeController {
         Stage stage = (Stage) button.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/login.fxml"));
         stage.setScene(new Scene(fxmlLoader.load(), 404, 550));
-        if (account != null) account = null;
+        if (employee != null) employee = null;
         stage.show();
     }
 
-    public void staffBtnOnAction(ActionEvent event) throws IOException {
+    public void employeeBtnOnAction(ActionEvent event) throws IOException {
         Button button = (Button) event.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/staffView.fxml"));
         stage.setScene(new Scene(fxmlLoader.load(), 600, 456));
-        StaffViewController staffViewController = fxmlLoader.getController();
-        staffViewController.setAccount(account);
+        EmployeeViewController employeeViewController = fxmlLoader.getController();
+        employeeViewController.setEmployee(employee);
         stage.show();
     }
 
-    public void orderBtnOnAction(ActionEvent event) throws IOException {
+    public void clothTypeBtnOnAction(ActionEvent event) throws IOException {
         Button button = (Button) event.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/order.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/createClothType.fxml"));
         stage.setScene(new Scene(fxmlLoader.load(), 404, 550));
-        OrderController orderController = fxmlLoader.getController();
-        orderController.setAccount(account);
         stage.show();
     }
 
-    public void setUpAccountLabel() {
-        if (account != null) {
-            accountLabel.setText(account.getType() + " : " + account.getFirstName() + " " + account.getLastName());
+    public void packageBtnOnAction(ActionEvent event) throws IOException {
+        Button button = (Button) event.getSource();
+        Stage stage = (Stage) button.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/createPackage.fxml"));
+        stage.setScene(new Scene(fxmlLoader.load(), 520, 291));
+        CreatePackageController createPackageController = fxmlLoader.getController();
+        createPackageController.setEmployee(employee);
+        stage.show();
+    }
+
+    private void setUpAccountLabel() {
+        if (employee != null) {
+            accountLabel.setText(employee.getType() + " : " + employee.getFirstName() + " " + employee.getLastName());
             accountLabel.disabledProperty();
         }
     }
 
-    public void setAccount(Account account) {
-        this.account = account;
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
         this.setUpAccountLabel();
     }
 }

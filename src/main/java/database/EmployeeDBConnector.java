@@ -2,30 +2,31 @@ package database;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import model.Account;
+import model.Employee;
 
 import java.sql.*;
 
-public class AccountDBConnector {
+public class EmployeeDBConnector {
     private static String myDriver = "org.sqlite.JDBC";
     private static String urlDB = "jdbc:sqlite:Database.db";
 
     public static ObservableList getAccounts() {
-        ObservableList<Account> accounts = FXCollections.observableArrayList();
+        ObservableList<Employee> employees = FXCollections.observableArrayList();
         try {
             Class.forName(myDriver);
             Connection connection = DriverManager.getConnection(urlDB);
             if (connection != null) {
-                String query = "select * from Account";
+                String query = "select * from Employee";
                 Statement statement = connection.createStatement();
                 ResultSet resultSet = statement.executeQuery(query);
                 while (resultSet.next()) {
                     String type = resultSet.getString("Type");
+                    int id = resultSet.getInt("EmployeeID");
                     String username = resultSet.getString("Username");
                     String password = resultSet.getString("Password");
                     String firstName = resultSet.getString("FirstName");
                     String lastName = resultSet.getString("LastName");
-                    accounts.add(new Account(type, username, password, firstName, lastName));
+                    employees.add(new Employee(type, id, username, password, firstName, lastName));
                 }
                 connection.close();
             }
@@ -34,25 +35,26 @@ public class AccountDBConnector {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        return accounts;
+        return employees;
     }
 
-    public static Account isLogin(String username, String password) {
+    public static Employee isLogin(String username, String password) {
         try {
             Class.forName(myDriver);
             Connection connection = DriverManager.getConnection(urlDB);
             if (connection != null) {
-                String query =  "select * from Account where Username = '" + username + "' and Password = '" + password + "'";
+                String query =  "select * from Employee where Username = '" + username + "' and Password = '" + password + "'";
                 Statement statement = connection.createStatement();
                 ResultSet resultSet = statement.executeQuery(query);
                 if (resultSet.next()) {
                     String type = resultSet.getString("Type");
+                    int id = resultSet.getInt("EmployeeID");
                     String userName = resultSet.getString("Username");
                     String passWord = resultSet.getString("Password");
                     String firstName = resultSet.getString("FirstName");
                     String lastName = resultSet.getString("LastName");
                     connection.close();
-                    return new Account(type, userName, passWord, firstName, lastName);
+                    return new Employee(type, id, userName, passWord, firstName, lastName);
                 }
             }
         } catch (SQLException e) {
@@ -68,7 +70,7 @@ public class AccountDBConnector {
             Class.forName(myDriver);
             Connection connection = DriverManager.getConnection(urlDB);
             if (connection != null) {
-                String query = "insert into Account (Type, Username, Password, FirstName, LastName) values ('" + type + "' , '" + username + "' , '" + password + "' , '" + firstName + "' , '" + lastName + "')";
+                String query = "insert into Employee (Type, Username, Password, FirstName, LastName) values ('" + type + "' , '" + username + "' , '" + password + "' , '" + firstName + "' , '" + lastName + "')";
                 PreparedStatement p = connection.prepareStatement(query);
                 p.executeUpdate();
             }
@@ -87,7 +89,7 @@ public class AccountDBConnector {
             Class.forName(myDriver);
             Connection connection = DriverManager.getConnection(urlDB);
             if (connection != null) {
-                String query = "delete from Account where Username == '" + username + "'";
+                String query = "delete from Employee where Username == '" + username + "'";
                 PreparedStatement p = connection.prepareStatement(query);
                 p.executeUpdate();
                 connection.close();
