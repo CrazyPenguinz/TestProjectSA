@@ -12,6 +12,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 import model.Employee;
+import utilities.CheckInput;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -72,11 +73,11 @@ public class CreatePackageController {
         String tmpAmount = amount.getText();
         String tmpPrice = price.getText();
         boolean allCorrect = true;
-        if (tmpAmount.equals("") || this.isNumeric(tmpAmount)) {
+        if (!CheckInput.isAllNumber(amount)) {
             cautionAmount.setText("Wrong amount");
             allCorrect = false;
         }
-        if (tmpPrice.equals("") || this.isNumeric(tmpPrice)) {
+        if (!CheckInput.isAllNumber(price)) {
             cautionPrice.setText("Wrong price");
             allCorrect = false;
         }
@@ -113,15 +114,5 @@ public class CreatePackageController {
         if (employee != null) {
             account.setText(employee.getFirstName() + " " + employee.getLastName());
         }
-    }
-
-    private boolean isNumeric(String tmp) {
-        try {
-            Double num = Double.parseDouble(tmp);
-            System.out.println(num);
-        } catch (NumberFormatException e) {
-            return true;
-        }
-        return false;
     }
 }

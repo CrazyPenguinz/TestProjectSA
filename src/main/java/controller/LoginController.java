@@ -82,7 +82,7 @@ public class LoginController {
 
     private void loginWithStaff(Stage stage, Employee employee) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/customerPayment.fxml"));
-        stage.setScene(new Scene(loader.load(), 574, 455));
+        stage.setScene(new Scene(loader.load(), 600, 492));
         CustomerPaymentController customerPaymentController = loader.getController();
         customerPaymentController.setEmployee(employee);
         caution.setVisible(false);

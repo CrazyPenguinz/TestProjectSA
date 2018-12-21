@@ -5,31 +5,36 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="492.0" prefWidth="762.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CustomerPaymentController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="493.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CustomerPaymentController">
    <children>
-      <TextField layoutX="263.0" layoutY="56.0" promptText="Fill Customer Name">
+      <TextField fx:id="name" layoutX="263.0" layoutY="56.0" promptText="Fill Customer Name">
          <font>
             <Font name="System Italic" size="12.0" />
          </font>
       </TextField>
-      <Button layoutX="412.0" layoutY="56.0" mnemonicParsing="false" text="Search" />
-      <TableView layoutX="110.0" layoutY="82.0" prefHeight="354.0" prefWidth="529.0">
+      <Button fx:id="search" layoutX="412.0" layoutY="56.0" mnemonicParsing="false" onAction="#searchBtnOnAction" text="Search" />
+      <TableView fx:id="payments" layoutX="110.0" layoutY="85.0" prefHeight="351.0" prefWidth="430.0">
         <columns>
-          <TableColumn prefWidth="110.4000015258789" text="C1" />
-          <TableColumn prefWidth="97.60003662109375" text="C2" />
-            <TableColumn prefWidth="100.79998779296875" text="C2" />
-            <TableColumn prefWidth="84.0" text="C2" />
-            <TableColumn prefWidth="134.4000183105469" text="C2" />
+          <TableColumn fx:id="billID" prefWidth="110.4000015258789" text="Bill ID" />
+            <TableColumn fx:id="employeeID" prefWidth="113.0" text="Employee charge" />
+            <TableColumn fx:id="status" prefWidth="88.0" text="Status" />
+          <TableColumn fx:id="date" prefWidth="117.0" text="Receive Date" />
         </columns>
       </TableView>
-      <Pane prefHeight="46.0" prefWidth="762.0" style="-fx-background-color: #DAA520;">
+      <Pane prefHeight="48.0" prefWidth="600.0" style="-fx-background-color: #DAA520;">
          <children>
-            <Label layoutX="592.0" layoutY="15.0" prefHeight="17.0" prefWidth="156.0" text="เอาใว้แสดงชื่อว่าใคร log in" textFill="#340c0c" />
+            <Label fx:id="account" layoutX="355.0" layoutY="16.0" prefHeight="17.0" prefWidth="156.0" textFill="#340c0c" />
+            <ImageView fx:id="back" fitHeight="51.0" fitWidth="29.0" layoutX="540.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/backwardbutton.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
       <Pane prefHeight="492.0" prefWidth="62.0" style="-fx-background-color: #DAA520;" />
@@ -38,7 +43,6 @@
             <Font name="System Italic" size="13.0" />
          </font>
       </Label>
-      <Button layoutX="588.0" layoutY="436.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="52.0" text="New" />
-      <Label layoutX="647.0" layoutY="441.0" text="สร้างใบเสร็จลูกค้า" />
+      <Button fx:id="newBill" layoutX="488.0" layoutY="436.0" mnemonicParsing="false" onAction="#newBtnOnAction" prefHeight="26.0" prefWidth="52.0" text="New" />
    </children>
 </AnchorPane>

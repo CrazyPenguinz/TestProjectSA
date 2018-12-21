@@ -15,6 +15,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 import model.Employee;
+import utilities.CheckInput;
 
 import java.io.IOException;
 
@@ -41,13 +42,20 @@ public class CreateClothTypeController {
                 stage.show();
             }
         });
+        type.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                type.setStyle("");
+                caution.setText("");
+            }
+        });
         caution.setTextFill(Paint.valueOf("RED"));
     }
 
     public void createBtnOnAction(ActionEvent event) {
         caution.setText("");
         String tmp = type.getText();
-        if (!tmp.equals("")) {
+        if (CheckInput.isAllCharacter(type)) {
             if (!ClothTypeDBConnector.checkDuplicate(tmp)) {
                 ClothTypeDBConnector.addNewClothType(tmp);
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);

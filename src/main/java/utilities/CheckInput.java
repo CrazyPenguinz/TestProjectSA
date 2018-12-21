@@ -11,7 +11,7 @@ public class CheckInput {
         boolean isCorrect = true;
         for (int i = 0; i < textField.getText().length(); i++) {
             if (isCorrect) {
-                if ((textField.getText().charAt(i) + "").matches("[0-9.]")) {
+                if ((textField.getText().charAt(i) + "").matches("[0-9.]+")) {
                 } else {
                     isCorrect = false;
                     textField.setStyle("-fx-border-color: red");
@@ -28,7 +28,7 @@ public class CheckInput {
         boolean isCorrect = true;
         for (int i = 0; i < textField.getText().length(); i++) {
             if (isCorrect) {
-                if (!(textField.getText().charAt(i) + "").matches( "[^-_= %#@!=+\\\\|\\[{\\]};:'\",<>/0-9.]*")) {
+                if (!(textField.getText().charAt(i) + "").matches( "[^-_= %#@!=+\\\\|\\[{\\]};:'\",<>/0-9*]*")) {
                     isCorrect = false;
                     textField.setStyle("-fx-border-color: red");
                     return isCorrect;
@@ -36,6 +36,21 @@ public class CheckInput {
             }
         }
         textField.setStyle("");
+        return isCorrect;
+    }
+
+    public static boolean isAllCharacter(String[] name) {
+        boolean isCorrect = true;
+        for (int i = 0; i < name.length; i++) {
+            if (isCorrect) {
+                for (int j = 0; j < name[i].length(); j++) {
+                    if (!(name[i].charAt(j) + "").matches("[^-_= %#@!=+\\\\|\\[{\\]};:'\",<>/0-9.]*")) {
+                        isCorrect = false;
+                        return isCorrect;
+                    }
+                }
+            }
+        }
         return isCorrect;
     }
 

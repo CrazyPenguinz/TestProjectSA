@@ -1,7 +1,5 @@
 package database;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import model.ClothType;
 
 import java.sql.*;
@@ -20,9 +18,10 @@ public class ClothTypeDBConnector {
                 Statement statement = connection.createStatement();
                 ResultSet resultSet = statement.executeQuery(query);
                 while (resultSet.next()) {
+                    connection.close();
                     return true;
                 }
-             connection.close();
+                connection.close();
             }
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
@@ -59,9 +58,10 @@ public class ClothTypeDBConnector {
                 Statement statement = connection.createStatement();
                 ResultSet resultSet = statement.executeQuery(query);
                 while (resultSet.next()) {
+                    int id = resultSet.getInt("ClothID");
                     String type = resultSet.getString("Type");
                     int coupon = resultSet.getInt("Amount");
-                    types.add(new ClothType(type, coupon));
+                    types.add(new ClothType(id, type, coupon));
                 }
                 connection.close();
             }
