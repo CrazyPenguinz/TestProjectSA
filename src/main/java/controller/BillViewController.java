@@ -56,7 +56,7 @@ public class BillViewController {
             }
         });
 
-        cid.setCellValueFactory(new PropertyValueFactory<OrderDetail, Integer>("BillID"));
+        cid.setCellValueFactory(new PropertyValueFactory<OrderDetail, Integer>("ClothTypeID"));
         type.setCellValueFactory(new PropertyValueFactory<OrderDetail, String>("Type"));
         qty.setCellValueFactory(new PropertyValueFactory<OrderDetail, Integer>("Quantity"));
 
