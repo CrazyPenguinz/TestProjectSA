@@ -38,6 +38,50 @@ public class EmployeeDBConnector {
         return employees;
     }
 
+    public static boolean checkNameDuplicate(String fn, String ln) {
+        try {
+            Class.forName(myDriver);
+            Connection connection = DriverManager.getConnection(urlDB);
+            if (connection != null) {
+                String query = "Select * from Employee where FirstName = '" + fn + "' and LastName = '" + ln + "'";
+                Statement statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery(query);
+                while (resultSet.next()) {
+                    connection.close();
+                    return true;
+                }
+                connection.close();
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public static boolean checkUsernameDuplicate(String username) {
+        try {
+            Class.forName(myDriver);
+            Connection connection = DriverManager.getConnection(urlDB);
+            if (connection != null) {
+                String query = "Select * from Employee where Username = '" + username + "'";
+                Statement statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery(query);
+                while (resultSet.next()) {
+                    connection.close();
+                    return true;
+                }
+                connection.close();
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     public static Employee isLogin(String username, String password) {
         try {
             Class.forName(myDriver);

@@ -39,16 +39,41 @@ public class CreateAccountController {
         checkTextField.add(firstName.getText());
         checkTextField.add(lastName.getText());
         if(CheckInput.isAllCorrectEmpty(checkTextField) && CheckInput.isAllCorrectType(checkBoolean) && CheckInput.isCorrectUsername(EmployeeDBConnector.getAccounts(),username)) {
-            EmployeeDBConnector.addAccount(roleBox.getValue(), username.getText(), password.getText(), firstName.getText(), lastName.getText());
-            Button button = (Button) event.getSource();
-            Stage stage = (Stage) button.getScene().getWindow();
-            this.resetField();
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            if (!EmployeeDBConnector.checkNameDuplicate(firstName.getText(), lastName.getText())) {
+                if (!EmployeeDBConnector.checkUsernameDuplicate(username.getText())) {
+                    EmployeeDBConnector.addAccount(roleBox.getValue(), username.getText(), password.getText(), firstName.getText(), lastName.getText());
+                    Button button = (Button) event.getSource();
+                    Stage stage = (Stage) button.getScene().getWindow();
+                    this.resetField();
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Washery Laundry");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Add Completed");
+                    alert.showAndWait();
+                    this.backToStaffTable(stage);
+                }
+                else {
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setTitle("Washery Laundry");
+                    alert.setHeaderText("CAUTION : This username already exist");
+                    alert.setContentText("Check your information again");
+                    alert.showAndWait();
+                }
+            }
+            else {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Washery Laundry");
+                alert.setHeaderText("CAUTION : This first name and last name already exist");
+                alert.setContentText("Check your information again");
+                alert.showAndWait();
+            }
+        }
+        else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Washery Laundry");
-            alert.setHeaderText(null);
-            alert.setContentText("Add Completed");
+            alert.setHeaderText("CAUTION : Invalid information");
+            alert.setContentText("Check your information again");
             alert.showAndWait();
-            this.backToStaffTable(stage);
         }
     }
 

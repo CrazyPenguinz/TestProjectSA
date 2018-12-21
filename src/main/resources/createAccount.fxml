@@ -23,7 +23,7 @@
       <Line endX="48.0" layoutX="232.0" layoutY="209.0" startX="-100.0" />
       <TextField fx:id="lastName" layoutX="317.0" layoutY="184.0" prefHeight="25.0" prefWidth="149.0" promptText="Lastname" style="-fx-background-color: white;" />
       <Line endX="45.0" layoutX="419.0" layoutY="209.0" startX="-100.0" />
-      <TextField fx:id="username" layoutX="131.0" layoutY="238.0" prefHeight="25.0" prefWidth="333.0" promptText="username" style="-fx-background-color: white;" />
+      <TextField fx:id="username" layoutX="131.0" layoutY="238.0" prefHeight="25.0" prefWidth="333.0" promptText="username (at least 1 character)" style="-fx-background-color: white;" />
       <Line endX="235.0" layoutX="229.0" layoutY="263.0" startX="-98.0" />
       <PasswordField fx:id="password" layoutX="131.0" layoutY="299.0" prefHeight="25.0" prefWidth="333.0" promptText="password" style="-fx-background-color: white;" />
       <Button fx:id="button" layoutX="392.0" layoutY="342.0" mnemonicParsing="false" onAction="#confirmBtnOnAction" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: white;" text="Confirm" underline="true">
