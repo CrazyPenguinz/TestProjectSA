@@ -78,6 +78,7 @@ public class SalePackageController {
 
     public void setEmployee(Employee employee) {
         this.employee = employee;
+        this.setupLabel();
     }
 
     public void setCustomer(Customer customer) {

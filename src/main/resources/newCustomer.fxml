@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="421.0" prefWidth="725.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NewCustomerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="421.0" prefWidth="725.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NewCustomerController">
    <children>
       <TextField fx:id="firstName" layoutX="427.0" layoutY="106.0" promptText="first name">
          <font>
@@ -42,6 +42,6 @@
             <Label fx:id="account" layoutX="604.0" layoutY="16.0" prefHeight="17.0" prefWidth="50.0" />
          </children>
       </Pane>
-      <Label fx:id="caution" layoutX="250.0" layoutY="309.0" prefHeight="65.0" prefWidth="225.0" />
+      <Label fx:id="caution" layoutX="250.0" layoutY="309.0" prefHeight="86.0" prefWidth="227.0" />
    </children>
 </AnchorPane>
