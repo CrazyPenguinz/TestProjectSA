@@ -67,6 +67,7 @@ public class BillDBConnector {
                     String status = resultSet.getString("Status");
                     bills.add(new Bill(bid, eid, cid, date, status));
                 }
+                connection.close();
             }
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
@@ -74,5 +75,22 @@ public class BillDBConnector {
             e.printStackTrace();
         }
         return bills;
+    }
+
+    public static void updateBillStatus(int billID, String status) {
+        try {
+            Class.forName(myDriver);
+            Connection connection = DriverManager.getConnection(urlDB);
+            if (connection != null) {
+                String query = "Update Bill set Status = '" + status + "' where BillID = '" + billID + "'";
+                PreparedStatement p = connection.prepareStatement(query);
+                p.executeUpdate();
+                connection.close();
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

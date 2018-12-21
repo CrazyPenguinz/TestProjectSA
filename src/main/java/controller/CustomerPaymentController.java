@@ -27,10 +27,11 @@ import java.util.Optional;
 public class CustomerPaymentController {
     private Employee employee;
     private Customer customer;
+    private Bill selectedBill;
     ObservableList<Bill> bills;
     @FXML private ImageView back;
     @FXML private TextField name;
-    @FXML private Button newBill, search;
+    @FXML private Button newBill, search, sale;
     @FXML private TableView<Bill> payments;
     @FXML private TableColumn date, billID, employeeID, status;
     @FXML private Label account;
@@ -58,6 +59,27 @@ public class CustomerPaymentController {
         date.setCellValueFactory(new PropertyValueFactory<Bill, LocalDate>("Date"));
         payments.setItems(bills);
         newBill.setDisable(true);
+        sale.setDisable(true);
+
+        payments.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if ((selectedBill = payments.getSelectionModel().getSelectedItem()) != null && !selectedBill.getStatus().equals("ชำระเงินเรียบร้อย")) {
+                    Stage stage = (Stage) payments.getScene().getWindow();
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/billView.fxml"));
+                    try {
+                        stage.setScene(new Scene(loader.load()));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    BillViewController billViewController = loader.getController();
+                    billViewController.setEmployee(employee);
+                    billViewController.setCustomer(customer);
+                    billViewController.setBill(selectedBill);
+                    stage.show();
+                }
+            }
+        });
     }
 
     public void newBtnOnAction(ActionEvent event) {
@@ -81,6 +103,7 @@ public class CustomerPaymentController {
         if (CheckInput.isAllCharacter(tmp)) {
             if ((customer = CustomerDBConnector.searchCustomer(tmp[0], tmp[1])) != null) {
                 newBill.setDisable(false);
+                sale.setDisable(false);
                 bills = BillDBConnector.getCustomerBill(customer.getId());
                 for (Bill b : bills) {
                     b.setDetails(OrderDetailDBConnector.getOrderDetail(b.getBillID()));
@@ -107,6 +130,20 @@ public class CustomerPaymentController {
             alert.setContentText("Fill customer's name again");
             alert.showAndWait();
         }
+    }
+
+    public void saleBtnOnAction(ActionEvent event) {
+        Stage stage = (Stage) sale.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/salePackage.fxml"));
+        try {
+            stage.setScene(new Scene(loader.load()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        SalePackageController salePackageController = loader.getController();
+        salePackageController.setCustomer(customer);
+        salePackageController.setEmployee(employee);
+        stage.show();
     }
 
     private void createCustomer(Stage stage) {
@@ -137,6 +174,7 @@ public class CustomerPaymentController {
         }
         if (customer != null) {
             name.setText(customer.getFirstName() + " " + customer.getLastName());
+            payments.setItems(BillDBConnector.getCustomerBill(customer.getId()));
         }
     }
 

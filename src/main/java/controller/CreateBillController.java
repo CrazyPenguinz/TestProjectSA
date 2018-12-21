@@ -104,6 +104,7 @@ public class CreateBillController {
             alert.setHeaderText(null);
             alert.setContentText("Add complete");
             alert.showAndWait();
+            BillDBConnector.updateBillStatus(tmp, "ตรวจสอบผ้า");
         }
     }
 
@@ -120,7 +121,7 @@ public class CreateBillController {
             account.setText(employee.getFirstName() + " " + employee.getLastName());
         }
         if (customer != null) {
-            coupon.setText(customer.getFirstName() + " : have " + " coupon(s)");
+            coupon.setText(customer.getFirstName() + " : have " + (customer.getOwn() - customer.getSpend()) + " coupon(s)");
         }
     }
 
