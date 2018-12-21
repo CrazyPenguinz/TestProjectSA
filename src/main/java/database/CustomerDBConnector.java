@@ -41,7 +41,7 @@ public class CustomerDBConnector {
             Class.forName(myDriver);
             Connection connection = DriverManager.getConnection(urlDB);
             if (connection != null) {
-                String query = "insert into Customer (FirstName, LastName, Phone, Address) values('" + fn + "' , '" + ln + "' , '" + phone + "' , '" + addr + "')";
+                String query = "insert into Customer (FirstName, LastName, Phone, Address, OwnCoupon, SpendCoupon) values('" + fn + "' , '" + ln + "' , '" + phone + "' , '" + addr + "' , ' 0 ' , ' 0 ')";
                 PreparedStatement p = connection.prepareStatement(query);
                 p.executeUpdate();
                 connection.close();
@@ -101,8 +101,8 @@ public class CustomerDBConnector {
                     String ln = resultSet.getString("LastName");
                     String addr = resultSet.getString("Address");
                     String phone = resultSet.getString("Phone");
-                    int own = resultSet.getInt("Own");
-                    int sp = resultSet.getInt("Spend");
+                    int own = resultSet.getInt("OwnCoupon");
+                    int sp = resultSet.getInt("SpendCoupon");
                     connection.close();
                     return new Customer(id, fn, ln, addr, phone, own, sp);
                 }

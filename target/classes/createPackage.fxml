@@ -30,7 +30,7 @@
             <Font name="System Italic" size="12.0" />
          </font>
       </TextField>
-      <DatePicker fx:id="expire" layoutX="201.0" layoutY="108.0" promptText="dd/mm/yy" />
+      <DatePicker fx:id="expire" layoutX="78.0" layoutY="106.0" promptText="dd/mm/yy" />
       <TextField fx:id="price" layoutX="339.0" layoutY="179.0" promptText="Price">
          <font>
             <Font name="System Italic" size="12.0" />
@@ -38,11 +38,13 @@
       </TextField>
       <Label fx:id="cautionAmount" layoutX="78.0" layoutY="205.0" />
       <Label fx:id="cautionPrice" layoutX="340.0" layoutY="205.0" />
-      <Label fx:id="cautionDate" layoutX="201.0" layoutY="131.0" />
+      <Label fx:id="cautionDate" layoutX="78.0" layoutY="131.0" prefHeight="17.0" prefWidth="20.0" />
+      <TextField fx:id="name" layoutX="339.0" layoutY="106.0" promptText="Name" />
       <Label layoutX="201.0" layoutY="55.0" prefHeight="44.0" prefWidth="157.0" text="Create Package" textFill="#296679">
          <font>
             <Font name="System Bold Italic" size="20.0" />
          </font>
       </Label>
+      <Label fx:id="cautionName" layoutX="339.0" layoutY="131.0" />
    </children>
 </AnchorPane>

@@ -65,6 +65,11 @@ public class SalePackageController {
                     if (result.get() == ButtonType.OK) {
                         CustomerDBConnector.buyPackage(customer.getId(), customer.getOwn() + p.getAmount());
                         customer = CustomerDBConnector.getCustomer(customer.getId());
+                        Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
+                        alert2.setTitle("Washery Laundry");
+                        alert2.setHeaderText(null);
+                        alert2.setContentText("Sale Completed");
+                        alert2.showAndWait();
                     }
                 }
             }

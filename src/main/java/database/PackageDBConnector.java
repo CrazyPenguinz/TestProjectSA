@@ -11,12 +11,12 @@ public class PackageDBConnector {
     private static String myDriver = "org.sqlite.JDBC";
     private static String urlDB = "jdbc:sqlite:Database.db";
 
-    public static void newPackage(String date, int amount, double price) {
+    public static void newPackage(String date, int amount, double price, String name) {
         try {
             Class.forName(myDriver);
             Connection connection = DriverManager.getConnection(urlDB);
             if (connection != null) {
-                String query = "insert into Package (Expire, Amount, Price) values ('" + date + "' , '" + amount + "' , '" + price + "')";
+                String query = "insert into Package (Expire, Amount, Price, Name) values ('" + date + "' , '" + amount + "' , '" + price + "' , '" + name + "')";
                 PreparedStatement p = connection.prepareStatement(query);
                 p.executeUpdate();
             }

@@ -100,6 +100,7 @@ public class CustomerPaymentController {
 
     public void searchBtnOnAction(ActionEvent event) {
         String[] tmp = name.getText().split(" ");
+        if (tmp.length < 2) return;
         if (CheckInput.isAllCharacter(tmp)) {
             if ((customer = CustomerDBConnector.searchCustomer(tmp[0], tmp[1])) != null) {
                 newBill.setDisable(false);
@@ -174,7 +175,13 @@ public class CustomerPaymentController {
         }
         if (customer != null) {
             name.setText(customer.getFirstName() + " " + customer.getLastName());
-            payments.setItems(BillDBConnector.getCustomerBill(customer.getId()));
+            bills = BillDBConnector.getCustomerBill(customer.getId());
+            for (Bill b : bills) {
+                b.setDetails(OrderDetailDBConnector.getOrderDetail(b.getBillID()));
+            }
+            payments.setItems(bills);
+            newBill.setDisable(false);
+            sale.setDisable(false);
         }
     }
 

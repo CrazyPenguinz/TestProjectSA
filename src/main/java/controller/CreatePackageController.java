@@ -21,9 +21,9 @@ public class CreatePackageController {
     private Employee employee;
     @FXML private Button create;
     @FXML private ImageView back;
-    @FXML private TextField amount, price;
+    @FXML private TextField amount, price, name;
     @FXML private DatePicker expire;
-    @FXML private Label cautionDate, cautionAmount, cautionPrice, account;
+    @FXML private Label cautionDate, cautionAmount, cautionPrice, cautionName, account;
 
     public void initialize() {
         back.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -63,15 +63,24 @@ public class CreatePackageController {
             }
         });
 
+        name.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                cautionName.setText("");
+            }
+        });
+
         cautionDate.setTextFill(Paint.valueOf("RED"));
         cautionPrice.setTextFill(Paint.valueOf("RED"));
         cautionAmount.setTextFill(Paint.valueOf("RED"));
+        cautionName.setTextFill(Paint.valueOf("RED"));
     }
 
     public void createBtnOnAction(ActionEvent event) {
         LocalDate tmpExpire = expire.getValue();
         String tmpAmount = amount.getText();
         String tmpPrice = price.getText();
+        String tmpName = name.getText();
         boolean allCorrect = true;
         if (!CheckInput.isAllNumber(amount)) {
             cautionAmount.setText("Wrong amount");
@@ -81,13 +90,17 @@ public class CreatePackageController {
             cautionPrice.setText("Wrong price");
             allCorrect = false;
         }
+        if (tmpName.equals("")) {{
+            cautionName.setText("Wrong name");
+            allCorrect = false;
+        }}
         if (tmpExpire == null || tmpExpire.isBefore(LocalDate.now())) {
             cautionDate.setText("Wrong date");
             allCorrect = false;
         }
 
         if (allCorrect) {
-            PackageDBConnector.newPackage(String.valueOf(tmpExpire), Integer.valueOf(tmpAmount), Double.parseDouble(tmpPrice));
+            PackageDBConnector.newPackage(String.valueOf(tmpExpire), Integer.valueOf(tmpAmount), Double.parseDouble(tmpPrice), tmpName);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Washery Laundry");
             alert.setHeaderText(null);
