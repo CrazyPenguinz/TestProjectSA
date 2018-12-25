@@ -7,6 +7,18 @@ import java.util.List;
 
 public class CheckInput {
 
+    public static boolean isInteger(TextField textField) {
+        boolean isCorrect = true;
+        try {
+            Integer.parseInt(textField.getText());
+        } catch (NumberFormatException e) {
+            isCorrect = false;
+            textField.setStyle("-fx-border-color: red");
+            return isCorrect;
+        }
+        return isCorrect;
+    }
+
     public static boolean isAllNumber(TextField textField) {
         boolean isCorrect = true;
         for (int i = 0; i < textField.getText().length(); i++) {
@@ -28,7 +40,22 @@ public class CheckInput {
         boolean isCorrect = true;
         for (int i = 0; i < textField.getText().length(); i++) {
             if (isCorrect) {
-                if (!(textField.getText().charAt(i) + "").matches( "[^-_= %#@!=+\\\\|\\[{\\]};:'\",<>/0-9*]*")) {
+                if (!(textField.getText().charAt(i) + "").matches( "[^-_= %#@!=+\\\\|\\[{\\]};:'\",<>/0-9.*]*")) {
+                    isCorrect = false;
+                    textField.setStyle("-fx-border-color: red");
+                    return isCorrect;
+                }
+            }
+        }
+        textField.setStyle("");
+        return isCorrect;
+    }
+
+    public static boolean isAllCharacterAndNumber(TextField textField) {
+        boolean isCorrect = true;
+        for (int i = 0; i < textField.getText().length(); i++) {
+            if (isCorrect) {
+                if (!(textField.getText().charAt(i) + "").matches( "[^-_= %#@!=+\\\\|\\[{\\]};:'\",<>/.*]*")) {
                     isCorrect = false;
                     textField.setStyle("-fx-border-color: red");
                     return isCorrect;
@@ -44,7 +71,7 @@ public class CheckInput {
         for (int i = 0; i < name.length; i++) {
             if (isCorrect) {
                 for (int j = 0; j < name[i].length(); j++) {
-                    if (!(name[i].charAt(j) + "").matches("[^-_= %#@!=+\\\\|\\[{\\]};:'\",<>/0-9.]*")) {
+                    if (!(name[i].charAt(j) + "").matches("[^-_= %#@!=+\\\\|\\[{\\]};:'\",<>/0-9.*]*")) {
                         isCorrect = false;
                         return isCorrect;
                     }

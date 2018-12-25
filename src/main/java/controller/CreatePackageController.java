@@ -86,14 +86,41 @@ public class CreatePackageController {
             cautionAmount.setText("Wrong amount");
             allCorrect = false;
         }
+        else if (!CheckInput.isInteger(amount)) {
+            cautionAmount.setText("Cannot floating point");
+            allCorrect = false;
+        }
+        else if (Integer.parseInt(tmpAmount) < 50 || Integer.parseInt(tmpAmount) > 1000) {
+            String tmp = Integer.parseInt(tmpAmount) < 50? "Not enough coupon" : "Too much coupon";
+            cautionAmount.setText(tmp);
+            allCorrect = false;
+        }
+
         if (!CheckInput.isAllNumber(price)) {
             cautionPrice.setText("Wrong price");
             allCorrect = false;
         }
-        if (tmpName.equals("")) {{
+        else if (!CheckInput.isInteger(price)) {
+            cautionPrice.setText("Cannot floating point");
+            allCorrect = false;
+        }
+        else if (CheckInput.isInteger(amount)) {
+            if (Integer.parseInt(tmpAmount) * 8 > Integer.parseInt(tmpPrice) || Integer.parseInt(tmpAmount) * 10 < Integer.parseInt(tmpPrice)) {
+                String tmp = Integer.parseInt(tmpAmount) * 8 > Integer.parseInt(tmpPrice) ? "Too cheap" : "Too expensive";
+                cautionPrice.setText(tmp);
+                allCorrect = false;
+            }
+        }
+
+        if (!CheckInput.isAllCharacterAndNumber(name)) {
             cautionName.setText("Wrong name");
             allCorrect = false;
-        }}
+        }
+        else if (tmpName.length() < 4 || tmpName.length() > 10) {
+            String tmp = tmpName.length() < 4? "Too short" : "Too long";
+            cautionName.setText(tmp);
+            allCorrect = false;
+        }
         if (tmpExpire == null || tmpExpire.isBefore(LocalDate.now())) {
             cautionDate.setText("Wrong date");
             allCorrect = false;

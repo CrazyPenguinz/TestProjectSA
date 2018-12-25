@@ -5,10 +5,10 @@ import java.time.LocalDate;
 public class Package {
     private int amount;
     private LocalDate expire;
-    private double price;
+    private int price;
     private String name;
 
-    public Package(int amount, LocalDate expire, double price, String name) {
+    public Package(int amount, LocalDate expire, int price, String name) {
         this.amount = amount;
         this.expire = expire;
         this.price = price;

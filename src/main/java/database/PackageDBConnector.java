@@ -43,7 +43,7 @@ public class PackageDBConnector {
                     if (!LocalDate.parse(resultSet.getString("Expire")).isBefore(LocalDate.now())) {
                         int amount = resultSet.getInt("Amount");
                         LocalDate date = LocalDate.parse(resultSet.getString("Expire"));
-                        double price = resultSet.getDouble("Price");
+                        int price = resultSet.getInt("Price");
                         String name = resultSet.getString("Name");
                         packages.add(new Package(amount, date, price, name));
                     }
