@@ -16,17 +16,20 @@ import javafx.stage.Stage;
 import model.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class BillViewController {
     private Employee employee;
     private Customer customer;
     private Bill bill;
     private int ttl;
+    private ArrayList<ClothType> types = new ArrayList<>();
     @FXML private Button save, edit, pay;
     @FXML private ImageView back;
     @FXML private Label total, account, description;
     @FXML private ChoiceBox<String> status;
     @FXML private TableView<OrderDetail> detailTableView;
+    @FXML private TableView<ClothType> coupons;
     @FXML private TableColumn price, type, qty;
     public void initialize() {
 
@@ -87,6 +90,7 @@ public class BillViewController {
             alert.setContentText("Paid Completed");
             alert.showAndWait();
             BillDBConnector.updateBillStatus(bill.getBillID(), "ชำระเงินเรียบร้อย");
+            bill.setStatus("ชำระเงินเรียบร้อย");
             customer = CustomerDBConnector.getCustomer(customer.getId());
             setupLabel();
         }
@@ -130,16 +134,21 @@ public class BillViewController {
             ttl = 0;
             for (OrderDetail d : bill.getDetails()) {
                 ttl += d.getQuantity() * ClothTypeDBConnector.getCouponPerType(d.getType());
+                types.add(ClothTypeDBConnector.getType(d.getType()));
             }
             total.setText(String.valueOf("Total : " + ttl));
             detailTableView.getItems().clear();
             detailTableView.getItems().addAll(bill.getDetails());
+            coupons.getItems().clear();
+            coupons.getItems().addAll(types);
             if (!bill.getStatus().equals("รอรับกลับ"))
                 pay.setDisable(true);
             else if (bill.getStatus().equals("รอรับกลับ"))
                 pay.setDisable(false);
-            if (bill.getStatus().equals("ชำระเงินเรียบร้อย"))
+            if (bill.getStatus().equals("ชำระเงินเรียบร้อย")) {
                 edit.setDisable(true);
+                pay.setDisable(true);
+            }
         }
     }
 

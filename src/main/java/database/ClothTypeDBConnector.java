@@ -73,6 +73,31 @@ public class ClothTypeDBConnector {
         return types;
     }
 
+    public static ClothType getType(String tmp) {
+        ClothType type = null;
+        try {
+            Class.forName(myDriver);
+            Connection connection = DriverManager.getConnection(urlDB);
+            if (connection != null) {
+                String query = "Select * from ClothType where Type = '" + tmp + "'";
+                Statement statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery(query);
+                while (resultSet.next()) {
+                    int id = resultSet.getInt("ClothID");
+                    String tp = resultSet.getString("Type");
+                    int coupon = resultSet.getInt("Amount");
+                    type = new ClothType(id, tp, coupon);
+                }
+                connection.close();
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return type;
+    }
+
     public static void updateCouponPerType(String type, int amount) {
         try {
             Class.forName(myDriver);

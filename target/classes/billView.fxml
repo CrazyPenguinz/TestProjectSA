@@ -15,11 +15,10 @@
       <Button fx:id="save" layoutX="127.0" layoutY="353.0" mnemonicParsing="false" onAction="#saveBtnOnAction" text="Save" />
       <ChoiceBox fx:id="status" layoutX="80.0" layoutY="321.0" prefHeight="26.0" prefWidth="94.0" />
       <Label fx:id="description" layoutX="359.0" layoutY="129.0" prefHeight="153.0" prefWidth="218.0" />
-      <TableView fx:id="detailTableView" layoutX="80.0" layoutY="80.0" prefHeight="235.0" prefWidth="263.0">
+      <TableView fx:id="detailTableView" layoutX="85.0" layoutY="75.0" prefHeight="240.0" prefWidth="203.0">
         <columns>
-          <TableColumn fx:id="price" prefWidth="58.4000244140625" text="C1" />
-          <TableColumn fx:id="type" prefWidth="144.79998779296875" text="C2" />
-            <TableColumn fx:id="qty" prefWidth="55.20001220703125" text="C2" />
+          <TableColumn fx:id="type" prefWidth="144.79998779296875" text="Type" />
+            <TableColumn fx:id="qty" prefWidth="55.20001220703125" text="Quantity" />
         </columns>
       </TableView>
       <Label fx:id="total" layoutX="280.0" layoutY="315.0" prefHeight="38.0" prefWidth="63.0" />
@@ -36,5 +35,10 @@
       </Pane>
       <Button fx:id="edit" layoutX="80.0" layoutY="353.0" mnemonicParsing="false" onAction="#editBtnOnAction" text="Edit" />
       <Button fx:id="pay" layoutX="186.0" layoutY="353.0" mnemonicParsing="false" onAction="#payBtnOnAction" text="Pay" />
+      <TableView fx:id="coupons" layoutX="288.0" layoutY="75.0" prefHeight="240.0" prefWidth="78.0">
+        <columns>
+          <TableColumn fx:id="price" prefWidth="75.0" text="Coupon" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>
