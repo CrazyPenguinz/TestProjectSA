@@ -35,6 +35,7 @@ public class CreateAccountController {
         List<Boolean> checkBoolean = new ArrayList<>();
         checkBoolean.add(CheckInput.isAllCharacter(firstName));
         checkBoolean.add(CheckInput.isAllCharacter(lastName));
+        checkBoolean.add(CheckInput.isAllCharacter(username));
         List<String> checkTextField = new ArrayList<>();
         checkTextField.add(firstName.getText());
         checkTextField.add(lastName.getText());

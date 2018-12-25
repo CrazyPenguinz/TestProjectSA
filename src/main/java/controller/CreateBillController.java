@@ -76,7 +76,7 @@ public class CreateBillController {
     }
 
     public void addBtnOnAction(ActionEvent event) {
-        if (amount.getText().equals("") || CheckInput.isAllNumber(amount)) {
+        if (!amount.getText().equals("") && CheckInput.isAllNumber(amount) && CheckInput.isInteger(amount) && Integer.parseInt(amount.getText()) > 0 && Integer.parseInt(amount.getText()) <= 100) {
             for (ClothType c : clothTypes) {
                 if (types.getValue().equals(c.getType())) {
                     orderDetails.add(new OrderDetail(c.getId(), c.getType(), Integer.parseInt(amount.getText())));
@@ -102,9 +102,20 @@ public class CreateBillController {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Washery Laundry");
             alert.setHeaderText(null);
-            alert.setContentText("Add complete");
+            alert.setContentText("Create complete");
             alert.showAndWait();
             BillDBConnector.updateBillStatus(tmp, "ตรวจสอบผ้า");
+            Stage stage = (Stage) button.getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/customerPayment.fxml"));
+            try {
+                stage.setScene(new Scene(loader.load()));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            CustomerPaymentController customerPaymentController = loader.getController();
+            customerPaymentController.setEmployee(employee);
+            customerPaymentController.setCustomer(customer);
+            stage.show();
         }
     }
 

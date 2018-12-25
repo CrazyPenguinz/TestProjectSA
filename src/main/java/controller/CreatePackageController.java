@@ -133,6 +133,7 @@ public class CreatePackageController {
             alert.setHeaderText(null);
             alert.setContentText("Add Completed");
             alert.showAndWait();
+            reset();
         }
 
         else {
@@ -154,5 +155,16 @@ public class CreatePackageController {
         if (employee != null) {
             account.setText(employee.getFirstName() + " " + employee.getLastName());
         }
+    }
+
+    private void reset() {
+        expire.setValue(null);
+        amount.setText(null);
+        price.setText(null);
+        name.setText(null);
+        cautionPrice.setText("");
+        cautionAmount.setText("");
+        cautionName.setText("");
+        cautionDate.setText("");
     }
 }

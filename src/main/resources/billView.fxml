@@ -17,7 +17,7 @@
       <Label fx:id="description" layoutX="359.0" layoutY="129.0" prefHeight="153.0" prefWidth="218.0" />
       <TableView fx:id="detailTableView" layoutX="80.0" layoutY="80.0" prefHeight="235.0" prefWidth="263.0">
         <columns>
-          <TableColumn fx:id="cid" prefWidth="58.4000244140625" text="C1" />
+          <TableColumn fx:id="price" prefWidth="58.4000244140625" text="C1" />
           <TableColumn fx:id="type" prefWidth="144.79998779296875" text="C2" />
             <TableColumn fx:id="qty" prefWidth="55.20001220703125" text="C2" />
         </columns>

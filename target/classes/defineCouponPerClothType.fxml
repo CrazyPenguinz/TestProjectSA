@@ -33,7 +33,7 @@
             <Font name="System Italic" size="12.0" />
          </font>
       </TextField>
-      <Button fx:id="submit" layoutX="407.0" layoutY="127.0" mnemonicParsing="false" onAction="#submitBtnOnAction" text="Submit" />
+      <Button fx:id="submit" layoutX="407.0" layoutY="127.0" mnemonicParsing="false" onAction="#submitBtnOnAction" text="Create" />
       <Label fx:id="caution" layoutX="160.0" layoutY="181.0" prefHeight="91.0" prefWidth="259.0" />
       <ChoiceBox fx:id="clothTypes" layoutX="180.0" layoutY="127.0" prefHeight="26.0" prefWidth="71.0" />
       <Label layoutX="101.0" layoutY="131.0" text="Clothes Type: " />

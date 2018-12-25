@@ -13,10 +13,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import model.Bill;
-import model.Customer;
-import model.Employee;
-import model.OrderDetail;
+import model.*;
 
 import java.io.IOException;
 
@@ -30,7 +27,7 @@ public class BillViewController {
     @FXML private Label total, account, description;
     @FXML private ChoiceBox<String> status;
     @FXML private TableView<OrderDetail> detailTableView;
-    @FXML private TableColumn cid, type, qty;
+    @FXML private TableColumn price, type, qty;
     public void initialize() {
 
         save.setDisable(true);
@@ -56,21 +53,23 @@ public class BillViewController {
             }
         });
 
-        cid.setCellValueFactory(new PropertyValueFactory<OrderDetail, Integer>("ClothTypeID"));
+        price.setCellValueFactory(new PropertyValueFactory<ClothType, Integer>("Coupon"));
         type.setCellValueFactory(new PropertyValueFactory<OrderDetail, String>("Type"));
         qty.setCellValueFactory(new PropertyValueFactory<OrderDetail, Integer>("Quantity"));
 
-        status.getItems().addAll("กำลังซัก", "รอรับกลับ", "ชำระเงินเรียบร้อย");
+        status.getItems().addAll("กำลังซัก", "รอรับกลับ");
     }
 
     public void saveBtnOnAction(ActionEvent event) {
         if (status.getValue() != null) {
+            bill.setStatus(status.getValue());
             BillDBConnector.updateBillStatus(bill.getBillID(), status.getValue());
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Washery Laundry");
             alert.setHeaderText(null);
             alert.setContentText("Save completed");
             alert.showAndWait();
+            setupLabel();
         }
         save.setDisable(true);
         save.setVisible(false);
@@ -85,10 +84,11 @@ public class BillViewController {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Washery Laundry");
             alert.setHeaderText(null);
-            alert.setContentText("Spend Completed");
+            alert.setContentText("Paid Completed");
             alert.showAndWait();
             BillDBConnector.updateBillStatus(bill.getBillID(), "ชำระเงินเรียบร้อย");
             customer = CustomerDBConnector.getCustomer(customer.getId());
+            setupLabel();
         }
 
         else {
@@ -107,6 +107,8 @@ public class BillViewController {
 
             status.setDisable(false);
             status.setVisible(true);
+
+            status.setValue(bill.getStatus());
         }
         else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -130,9 +132,14 @@ public class BillViewController {
                 ttl += d.getQuantity() * ClothTypeDBConnector.getCouponPerType(d.getType());
             }
             total.setText(String.valueOf("Total : " + ttl));
+            detailTableView.getItems().clear();
             detailTableView.getItems().addAll(bill.getDetails());
             if (!bill.getStatus().equals("รอรับกลับ"))
                 pay.setDisable(true);
+            else if (bill.getStatus().equals("รอรับกลับ"))
+                pay.setDisable(false);
+            if (bill.getStatus().equals("ชำระเงินเรียบร้อย"))
+                edit.setDisable(true);
         }
     }
 

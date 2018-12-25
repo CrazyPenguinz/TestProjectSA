@@ -36,7 +36,7 @@ public class PackageDBConnector {
             Class.forName(myDriver);
             Connection connection = DriverManager.getConnection(urlDB);
             if (connection != null) {
-                String query = "Select * from Package";
+                String query = "Select * from Package Order by Amount";
                 Statement statement =  connection.createStatement();
                 ResultSet resultSet = statement.executeQuery(query);
                 while (resultSet.next()) {

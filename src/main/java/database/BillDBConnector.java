@@ -56,16 +56,18 @@ public class BillDBConnector {
             Class.forName(myDriver);
             Connection connection = DriverManager.getConnection(urlDB);
             if (connection != null) {
-                String query = "Select * from Bill where CustomerID = '" + customerID + "'";
+                String query = "Select * from Bill where CustomerID = '" + customerID + "' Order by BillID DESC";
                 Statement statement = connection.createStatement();
                 ResultSet resultSet = statement.executeQuery(query);
                 while (resultSet.next()) {
-                    int bid = resultSet.getInt("BillID");
-                    int eid = resultSet.getInt("EmployeeID");
-                    int cid = resultSet.getInt("CustomerID");
-                    LocalDate date = LocalDate.parse(resultSet.getString("Date"));
-                    String status = resultSet.getString("Status");
-                    bills.add(new Bill(bid, eid, cid, date, status));
+                    if (!resultSet.getString("Status").equals("ชำระเงินเรียบร้อย")) {
+                        int bid = resultSet.getInt("BillID");
+                        int eid = resultSet.getInt("EmployeeID");
+                        int cid = resultSet.getInt("CustomerID");
+                        LocalDate date = LocalDate.parse(resultSet.getString("Date"));
+                        String status = resultSet.getString("Status");
+                        bills.add(new Bill(bid, eid, cid, date, status));
+                    }
                 }
                 connection.close();
             }
@@ -92,5 +94,25 @@ public class BillDBConnector {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public static boolean checkBillCreatedByEmployee(int employeeID) {
+        try {
+            Class.forName(myDriver);
+            Connection connection = DriverManager.getConnection(urlDB);
+            if (connection != null) {
+                String query = "Select * from Bill where EmployeeID = '" + employeeID + "'";
+                Statement statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery(query);
+                while (resultSet.next()) {
+                    return false;
+                }
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return true;
     }
 }

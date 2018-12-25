@@ -11,6 +11,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import model.ClothType;
 import model.Employee;
+import utilities.CheckInput;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -65,20 +66,27 @@ public class DefineCouponController {
     @FXML
     public void submitBtnOnAction(){
         if (clothTypes.getValue() != null) {
-            if (coupons.getText() != "") {
+            if (coupons.getText() != "" || CheckInput.isInteger(coupons)) {
                 int coupon = Integer.parseInt(coupons.getText());
-                if (coupon > 0) {
-                    ClothTypeDBConnector.updateCouponPerType(clothTypes.getValue(), coupon);
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Washery Laundry");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Update Completed");
-                    alert.showAndWait();
-                } else {
-                    caution.setText("Not enough coupons");
+                if (coupon >= 3 && coupon <= 10) {
+                    if (coupon > 0) {
+                        ClothTypeDBConnector.updateCouponPerType(clothTypes.getValue(), coupon);
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Washery Laundry");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Update Completed");
+                        alert.showAndWait();
+                        coupons.setText(null);
+                        caution.setText(null);
+                    } else {
+                        caution.setText("Not enough coupons");
+                    }
+                }
+                else {
+                    caution.setText(coupon < 3? "Too cheap" : "Too expensive");
                 }
             } else {
-                caution.setText("Please fill coupons in the blank");
+                caution.setText(coupons.getText() != ""? "Please fill coupons in the blank" : "Coupon cannot floating point");
             }
         }
         else {

@@ -45,4 +45,8 @@ public class Bill {
     public LocalDate getDate() {
         return date;
     }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }

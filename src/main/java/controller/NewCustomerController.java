@@ -59,6 +59,7 @@ public class NewCustomerController {
         else if (!CheckInput.isAllCharacter(lastName)) warning += "Last name allow only character\n";
         if (ph.equals("")) warning += "Phone field cannot blank\n";
         else if (!CheckInput.isAllNumber(phone)) warning += "Phone allow only digit (0-9)\n";
+        else if (ph.length() != 10) warning += "Phone number must 10 digits\n";
         if (CustomerDBConnector.checkNameDuplicate(fn, ln)) warning += "This name already exist\n";
 
         if (warning.equals("")) {

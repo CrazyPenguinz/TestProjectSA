@@ -1,5 +1,6 @@
 package controller;
 
+import database.BillDBConnector;
 import database.EmployeeDBConnector;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -48,24 +49,41 @@ public class EmployeeViewController {
 
     public void deleteBtnOnAction(ActionEvent event) throws IOException {
         if (accountTableView.getSelectionModel().getSelectedItem() != null) {
-            String username = accountTableView.getSelectionModel().getSelectedItem().getUsername();
-            String password = accountTableView.getSelectionModel().getSelectedItem().getPassword();
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Washery Laundry");
-            alert.setHeaderText("CAUTION! YOU CHOOSE TO DELETE ACCOUNT");
-            alert.setContentText("Are you sure to delete?");
+            if (BillDBConnector.checkBillCreatedByEmployee(accountTableView.getSelectionModel().getSelectedItem().getId())) {
+                String username = accountTableView.getSelectionModel().getSelectedItem().getUsername();
+                String password = accountTableView.getSelectionModel().getSelectedItem().getPassword();
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Washery Laundry");
+                alert.setHeaderText("CAUTION! YOU CHOOSE TO DELETE ACCOUNT");
+                alert.setContentText("Are you sure to delete?");
 
-            Optional<ButtonType> result = alert.showAndWait();
-            if (result.get() == ButtonType.CANCEL) {
-                return;
+                alert.getButtonTypes().clear();
+                alert.getButtonTypes().addAll(ButtonType.YES,ButtonType.NO);
+                //Set Default No Button
+                Button yesButton = (Button) alert.getDialogPane().lookupButton( ButtonType.YES );
+                yesButton.setDefaultButton( false );
+
+                Button noButton = (Button) alert.getDialogPane().lookupButton( ButtonType.NO );
+                noButton.setDefaultButton( true );
+                Optional<ButtonType> action = alert.showAndWait();
+                if(action.get() == ButtonType.NO) {
+                   return;
+                }
+                EmployeeDBConnector.deleteAccount(username);
+                if (username.equals(employee.getUsername()) && password.equals(employee.getPassword())) {
+                    Button button = (Button) event.getSource();
+                    Stage stage = (Stage) button.getScene().getWindow();
+                    backToLogin(stage);
+                }
+                accountTableView.setItems(EmployeeDBConnector.getAccounts());
             }
-            EmployeeDBConnector.deleteAccount(username);
-            if (username.equals(employee.getUsername()) && password.equals(employee.getPassword())) {
-                Button button = (Button) event.getSource();
-                Stage stage = (Stage) button.getScene().getWindow();
-                backToLogin(stage);
+            else {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Washery Laundry");
+                alert.setHeaderText(null);
+                alert.setContentText("Cannot delete this account");
+                alert.showAndWait();
             }
-            accountTableView.setItems(EmployeeDBConnector.getAccounts());
         }
     }
 

@@ -63,6 +63,8 @@ public class CreateClothTypeController {
                 alert.setHeaderText(null);
                 alert.setContentText("Add Completed");
                 alert.showAndWait();
+                type.setText(null);
+                caution.setText("");
             }
             else {
                 caution.setText("This type already exist");

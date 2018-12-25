@@ -100,35 +100,41 @@ public class CustomerPaymentController {
 
     public void searchBtnOnAction(ActionEvent event) {
         String[] tmp = name.getText().split(" ");
-        if (tmp.length < 2) return;
-        if (CheckInput.isAllCharacter(tmp)) {
-            if ((customer = CustomerDBConnector.searchCustomer(tmp[0], tmp[1])) != null) {
-                newBill.setDisable(false);
-                sale.setDisable(false);
-                bills = BillDBConnector.getCustomerBill(customer.getId());
-                for (Bill b : bills) {
-                    b.setDetails(OrderDetailDBConnector.getOrderDetail(b.getBillID()));
-                }
-                payments.setItems(bills);
-            }
-            else {
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setTitle("Washery Laundry");
-                alert.setHeaderText("NOT FOUND THIS CUSTOMER");
-                alert.setContentText("Do you want to register?");
+        if (tmp.length == 2) {
+            if (CheckInput.isAllCharacter(tmp)) {
+                if ((customer = CustomerDBConnector.searchCustomer(tmp[0], tmp[1])) != null) {
+                    newBill.setDisable(false);
+                    sale.setDisable(false);
+                    bills = BillDBConnector.getCustomerBill(customer.getId());
+                    for (Bill b : bills) {
+                        b.setDetails(OrderDetailDBConnector.getOrderDetail(b.getBillID()));
+                    }
+                    payments.setItems(bills);
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setTitle("Washery Laundry");
+                    alert.setHeaderText("NOT FOUND THIS CUSTOMER");
+                    alert.setContentText("Do you want to register?");
 
-                Optional<ButtonType> result = alert.showAndWait();
-                if (result.get() == ButtonType.OK) {
-                    Stage stage = (Stage) search.getScene().getWindow();
-                    this.createCustomer(stage);
+                    Optional<ButtonType> result = alert.showAndWait();
+                    if (result.get() == ButtonType.OK) {
+                        Stage stage = (Stage) search.getScene().getWindow();
+                        this.createCustomer(stage);
+                    }
                 }
+            } else {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Washery Laundry");
+                alert.setHeaderText("Invalid information");
+                alert.setContentText("Fill customer's name again");
+                alert.showAndWait();
             }
         }
         else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Washery Laundry");
-            alert.setHeaderText("Invalid information");
-            alert.setContentText("Fill customer's name again");
+            alert.setHeaderText("Invalid format");
+            alert.setContentText("Fill customer's name again\nFormat first name space last name");
             alert.showAndWait();
         }
     }
