@@ -12,23 +12,23 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="421.0" prefWidth="725.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NewCustomerController">
    <children>
-      <TextField fx:id="firstName" layoutX="427.0" layoutY="106.0" promptText="first name">
+      <TextField fx:id="firstName" layoutX="428.0" layoutY="150.0" promptText="first name">
          <font>
             <Font name="System Italic" size="12.0" />
          </font>
       </TextField>
-      <TextField fx:id="lastName" layoutX="427.0" layoutY="174.0" promptText="last name">
+      <TextField fx:id="lastName" layoutX="428.0" layoutY="218.0" promptText="last name">
          <font>
             <Font name="System Italic" size="12.0" />
          </font>
       </TextField>
-      <TextField fx:id="phone" layoutX="427.0" layoutY="241.0" promptText="Tel">
+      <TextField fx:id="phone" layoutX="428.0" layoutY="285.0" promptText="Tel">
          <font>
             <Font name="System Italic" size="12.0" />
          </font>
       </TextField>
-      <TextArea fx:id="address" layoutX="151.0" layoutY="83.0" prefHeight="200.0" prefWidth="200.0" promptText="address" />
-      <Button fx:id="create" layoutX="523.0" layoutY="283.0" mnemonicParsing="false" onAction="#createBtnOnAction" text="Create" />
+      <TextArea fx:id="address" layoutX="152.0" layoutY="127.0" prefHeight="200.0" prefWidth="200.0" promptText="address" />
+      <Button fx:id="create" layoutX="524.0" layoutY="327.0" mnemonicParsing="false" onAction="#createBtnOnAction" text="Create" />
       <Pane layoutY="-2.0" prefHeight="423.0" prefWidth="60.0" style="-fx-background-color: #b58b53;">
          <children>
             <ImageView fx:id="back" fitHeight="51.0" fitWidth="29.0" layoutX="16.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
@@ -39,9 +39,18 @@
          </children></Pane>
       <Pane layoutY="-1.0" prefHeight="49.0" prefWidth="726.0" style="-fx-background-color: #b58b53;">
          <children>
-            <Label fx:id="account" layoutX="604.0" layoutY="16.0" prefHeight="17.0" prefWidth="50.0" />
+            <Label fx:id="account" alignment="TOP_RIGHT" layoutX="507.0" layoutY="16.0" prefHeight="17.0" prefWidth="187.0" />
          </children>
       </Pane>
       <Label fx:id="caution" layoutX="250.0" layoutY="309.0" prefHeight="86.0" prefWidth="227.0" />
+      <Label layoutX="284.0" layoutY="67.0" prefHeight="44.0" prefWidth="168.0" text="Create Customer" textFill="#296679">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="152.0" layoutY="111.0" text="fill address" />
+      <Label layoutX="428.0" layoutY="128.0" text="fill first name" />
+      <Label layoutX="428.0" layoutY="201.0" text="fill last name" />
+      <Label layoutX="428.0" layoutY="268.0" text="fill tel" />
    </children>
 </AnchorPane>

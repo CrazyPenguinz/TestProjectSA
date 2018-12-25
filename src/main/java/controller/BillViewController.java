@@ -26,7 +26,7 @@ public class BillViewController {
     private ArrayList<ClothType> types = new ArrayList<>();
     @FXML private Button save, edit, pay;
     @FXML private ImageView back;
-    @FXML private Label total, account, description;
+    @FXML private Label total, account, description, billDetail, change;
     @FXML private ChoiceBox<String> status;
     @FXML private TableView<OrderDetail> detailTableView;
     @FXML private TableView<ClothType> coupons;
@@ -38,6 +38,7 @@ public class BillViewController {
 
         status.setDisable(true);
         status.setVisible(false);
+        change.setVisible(false);
 
         back.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -79,17 +80,18 @@ public class BillViewController {
 
         status.setDisable(true);
         status.setVisible(false);
+        change.setVisible(false);
     }
 
     public void payBtnOnAction(ActionEvent event) {
         if (ttl <= customer.getOwn() - customer.getSpend()) {
             CustomerDBConnector.customerSpend(customer.getId(), customer.getSpend() + ttl);
+            BillDBConnector.updateBillStatus(bill.getBillID(), "ชำระเงินเรียบร้อย");
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Washery Laundry");
             alert.setHeaderText(null);
             alert.setContentText("Paid Completed");
             alert.showAndWait();
-            BillDBConnector.updateBillStatus(bill.getBillID(), "ชำระเงินเรียบร้อย");
             bill.setStatus("ชำระเงินเรียบร้อย");
             customer = CustomerDBConnector.getCustomer(customer.getId());
             setupLabel();
@@ -111,7 +113,7 @@ public class BillViewController {
 
             status.setDisable(false);
             status.setVisible(true);
-
+            change.setVisible(true);
             status.setValue(bill.getStatus());
         }
         else {
@@ -128,15 +130,18 @@ public class BillViewController {
             account.setText(employee.getFirstName() + " " + employee.getLastName());
         }
         if (customer != null) {
-            description.setText("Name : " + customer.getFirstName() + " " + customer.getLastName() + "\nPhone : " + customer.getPhone() + "\nAddress : " + customer.getAddress() + "\nCoupon : " + customer.getSpend() + "/" + customer.getOwn());
+            description.setText("Name : " + customer.getFirstName() + " " + customer.getLastName() + "\nPhone : " + customer.getPhone()
+                    + "\nAddress : " + customer.getAddress() + "\nCoupon : " + (customer.getOwn() - customer.getSpend()) + " remain(s)");
         }
         if (bill != null) {
+            billDetail.setText("Bill ID : " + bill.getBillID() + "\nDate : " + bill.getDate() + "\nStatus : " + bill.getStatus());
             ttl = 0;
+            types.clear();
             for (OrderDetail d : bill.getDetails()) {
                 ttl += d.getQuantity() * ClothTypeDBConnector.getCouponPerType(d.getType());
                 types.add(ClothTypeDBConnector.getType(d.getType()));
             }
-            total.setText(String.valueOf("Total : " + ttl));
+            total.setText(String.valueOf("Total : " + ttl + " Coupon(s)"));
             detailTableView.getItems().clear();
             detailTableView.getItems().addAll(bill.getDetails());
             coupons.getItems().clear();

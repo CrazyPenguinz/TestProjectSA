@@ -10,13 +10,13 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="291.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreatePackageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="291.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreatePackageController">
    <children>
-      <Pane prefHeight="44.0" prefWidth="520.0" style="-fx-background-color: #DAA520;">
+      <Pane prefHeight="44.0" prefWidth="520.0" style="-fx-background-color: #b58b53;">
          <children>
-            <Label fx:id="account" layoutX="400.0" layoutY="6.0" prefHeight="14.0" prefWidth="106.0" text="ชื่อ manager" />
+            <Label fx:id="account" alignment="TOP_RIGHT" layoutX="332.0" layoutY="6.0" prefHeight="17.0" prefWidth="174.0" />
          </children></Pane>
-      <Pane layoutY="-12.0" prefHeight="303.0" prefWidth="55.0" style="-fx-background-color: #DAA520;">
+      <Pane layoutY="-12.0" prefHeight="303.0" prefWidth="55.0" style="-fx-background-color: #b58b53;">
          <children>
             <ImageView fx:id="back" fitHeight="51.0" fitWidth="29.0" layoutX="13.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -46,5 +46,9 @@
          </font>
       </Label>
       <Label fx:id="cautionName" layoutX="339.0" layoutY="131.0" />
+      <Label layoutX="79.0" layoutY="90.0" text="select mm/dd/yy" />
+      <Label layoutX="339.0" layoutY="91.0" text="fill name" />
+      <Label layoutX="79.0" layoutY="162.0" prefHeight="17.0" prefWidth="66.0" text="fill amount" />
+      <Label layoutX="339.0" layoutY="162.0" text="fill price" />
    </children>
 </AnchorPane>

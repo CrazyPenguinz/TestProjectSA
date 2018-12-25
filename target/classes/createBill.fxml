@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="484.0" prefWidth="749.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreateBillController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="484.0" prefWidth="749.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreateBillController">
    <children>
       <ChoiceBox fx:id="types" layoutX="151.0" layoutY="118.0" prefHeight="26.0" prefWidth="98.0" />
       <Label layoutX="151.0" layoutY="100.0" text="Category clothes" />
@@ -29,11 +29,11 @@
             <TableColumn fx:id="qty" prefWidth="96.0" text="Quantity" />
         </columns>
       </TableView>
-      <Pane prefHeight="46.0" prefWidth="750.0" style="-fx-background-color: #DAA520;">
+      <Pane prefHeight="46.0" prefWidth="750.0" style="-fx-background-color: #b58b53;">
          <children>
-            <Label fx:id="account" layoutX="642.0" layoutY="10.0" prefHeight="26.0" prefWidth="74.0" />
+            <Label fx:id="account" alignment="TOP_RIGHT" layoutX="551.0" layoutY="10.0" prefHeight="26.0" prefWidth="165.0" />
          </children></Pane>
-      <Pane prefHeight="484.0" prefWidth="62.0" style="-fx-background-color: #DAA520;">
+      <Pane prefHeight="484.0" prefWidth="62.0" style="-fx-background-color: #b58b53;">
          <children>
             <ImageView fx:id="back" fitHeight="51.0" fitWidth="29.0" layoutX="17.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -49,5 +49,6 @@
             <Font name="System Bold Italic" size="20.0" />
          </font>
       </Label>
+      <Label layoutX="249.0" layoutY="100.0" text="Amount Cloth" />
    </children>
 </AnchorPane>

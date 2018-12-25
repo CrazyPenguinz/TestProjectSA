@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="327.0" prefWidth="560.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreateClothTypeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="327.0" prefWidth="560.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreateClothTypeController">
    <children>
       <Pane prefHeight="44.0" prefWidth="560.0" style="-fx-background-color: #b58b53;">
          <children>
@@ -36,5 +36,6 @@
             <Font name="System Bold Italic" size="20.0" />
          </font>
       </Label>
+      <Label layoutX="115.0" layoutY="125.0" prefHeight="26.0" prefWidth="82.0" text="fill cloth type" />
    </children>
 </AnchorPane>

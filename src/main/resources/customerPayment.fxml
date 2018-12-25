@@ -11,16 +11,16 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="493.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CustomerPaymentController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="493.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CustomerPaymentController">
    <children>
-      <Button fx:id="sale" layoutX="400.0" layoutY="437.0" mnemonicParsing="false" onAction="#saleBtnOnAction" text="Sale Package" />
-      <TextField fx:id="name" layoutX="263.0" layoutY="56.0" promptText="Fill Customer Name">
+      <Button fx:id="sale" layoutX="400.0" layoutY="467.0" mnemonicParsing="false" onAction="#saleBtnOnAction" text="Sale Package" />
+      <TextField fx:id="name" layoutX="263.0" layoutY="86.0" promptText="Fill Customer Name">
          <font>
             <Font name="System Italic" size="12.0" />
          </font>
       </TextField>
-      <Button fx:id="search" layoutX="412.0" layoutY="56.0" mnemonicParsing="false" onAction="#searchBtnOnAction" text="Search" />
-      <TableView fx:id="payments" layoutX="110.0" layoutY="85.0" prefHeight="350.0" prefWidth="430.0">
+      <Button fx:id="search" layoutX="412.0" layoutY="86.0" mnemonicParsing="false" onAction="#searchBtnOnAction" text="Search" />
+      <TableView fx:id="payments" layoutX="110.0" layoutY="115.0" prefHeight="350.0" prefWidth="430.0">
         <columns>
           <TableColumn fx:id="billID" prefWidth="110.4000015258789" text="Bill ID" />
             <TableColumn fx:id="employeeID" prefWidth="113.0" text="Employee charge" />
@@ -28,9 +28,9 @@
           <TableColumn fx:id="date" prefWidth="117.0" text="Receive Date" />
         </columns>
       </TableView>
-      <Pane prefHeight="48.0" prefWidth="600.0" style="-fx-background-color: #DAA520;">
+      <Pane prefHeight="48.0" prefWidth="600.0" style="-fx-background-color: #b58b53;">
          <children>
-            <Label fx:id="account" layoutX="355.0" layoutY="16.0" prefHeight="17.0" prefWidth="156.0" textFill="#340c0c" />
+            <Label fx:id="account" alignment="TOP_RIGHT" layoutX="329.0" layoutY="16.0" prefHeight="17.0" prefWidth="182.0" textFill="#340c0c" />
             <ImageView fx:id="back" fitHeight="51.0" fitWidth="29.0" layoutX="540.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@image/backwardbutton.png" />
@@ -38,12 +38,17 @@
             </ImageView>
          </children>
       </Pane>
-      <Pane prefHeight="492.0" prefWidth="62.0" style="-fx-background-color: #DAA520;" />
-      <Label layoutX="161.0" layoutY="55.0" prefHeight="26.0" prefWidth="132.0" text="Customer Name: ">
+      <Pane prefHeight="492.0" prefWidth="62.0" style="-fx-background-color: #b58b53;" />
+      <Label layoutX="161.0" layoutY="85.0" prefHeight="26.0" prefWidth="132.0" text="Customer Name: ">
          <font>
             <Font name="System Italic" size="13.0" />
          </font>
       </Label>
-      <Button fx:id="newBill" layoutX="488.0" layoutY="436.0" mnemonicParsing="false" onAction="#newBtnOnAction" prefHeight="26.0" prefWidth="52.0" text="New" />
+      <Button fx:id="newBill" layoutX="488.0" layoutY="466.0" mnemonicParsing="false" onAction="#newBtnOnAction" prefHeight="26.0" prefWidth="52.0" text="New" />
+      <Label layoutX="254.0" layoutY="45.0" prefHeight="44.0" prefWidth="196.0" text="Customer Bill" textFill="#296679">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
